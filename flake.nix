@@ -1,5 +1,5 @@
 {
-  description = "Ripxorips NixOS flake";
+  description = "Bonkonix NixOS flake";
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-23.11";
     # You can access packages and modules from different nixpkgs revs at the
@@ -64,7 +64,7 @@
 
       # The home-manager configurations (e.g): home-manager switch --flake ~/dev/ripxonix/#ripxorip@ripxowork
       homeConfigurations = {
-        "ripxorip@ripxostation" = lib.homeManagerConfiguration {
+        "patrik@bonkywork" = lib.homeManagerConfiguration {
           modules = [
             ./home-manager
           ];
@@ -72,87 +72,9 @@
           extraSpecialArgs = {
             inherit inputs outputs stateVersion darkmode;
             desktop = "gnome";
-            hostname = "ripxostation";
+            hostname = "bonkywork";
             platform = "x86_64-linux";
-            username = "ripxorip";
-          };
-        };
-        "ripxorip@ripxowork" = lib.homeManagerConfiguration {
-          modules = [
-            ./home-manager
-          ];
-          pkgs = pkgsFor.x86_64-linux;
-          extraSpecialArgs = {
-            inherit inputs outputs stateVersion darkmode;
-            desktop = "gnome";
-            hostname = "ripxowork";
-            platform = "x86_64-linux";
-            username = "ripxorip";
-          };
-        };
-        "ripxorip@ripxolab" = lib.homeManagerConfiguration {
-          modules = [
-            ./home-manager
-          ];
-          pkgs = pkgsFor.x86_64-linux;
-          extraSpecialArgs = {
-            inherit inputs outputs stateVersion darkmode;
-            desktop = "gnome";
-            hostname = "ripxolab";
-            platform = "x86_64-linux";
-            username = "ripxorip";
-          };
-        };
-        "ripxorip@vm" = lib.homeManagerConfiguration {
-          modules = [
-            ./home-manager
-          ];
-          pkgs = pkgsFor.x86_64-linux;
-          extraSpecialArgs = {
-            inherit inputs outputs stateVersion darkmode;
-            desktop = "plasma";
-            hostname = "vm";
-            platform = "x86_64-linux";
-            username = "ripxorip";
-          };
-        };
-        "ripxorip@ripxopad" = lib.homeManagerConfiguration {
-          modules = [
-            ./home-manager
-          ];
-          pkgs = pkgsFor.x86_64-linux;
-          extraSpecialArgs = {
-            inherit inputs outputs stateVersion darkmode;
-            desktop = "gnome";
-            hostname = "ripxopad";
-            platform = "x86_64-linux";
-            username = "ripxorip";
-          };
-        };
-        "ripxorip@ripxonode" = lib.homeManagerConfiguration {
-          modules = [
-            ./home-manager
-          ];
-          pkgs = pkgsFor.x86_64-linux;
-          extraSpecialArgs = {
-            inherit inputs outputs stateVersion darkmode;
-            hostname = "ripxonode";
-            platform = "x86_64-linux";
-            username = "ripxorip";
-            desktop = null;
-          };
-        };
-        "ripxorip@mserver" = lib.homeManagerConfiguration {
-          modules = [
-            ./home-manager
-          ];
-          pkgs = pkgsFor.x86_64-linux;
-          extraSpecialArgs = {
-            inherit inputs outputs stateVersion darkmode;
-            hostname = "mserver";
-            platform = "x86_64-linux";
-            username = "ripxorip";
-            desktop = null;
+            username = "patrik";
           };
         };
       };
@@ -161,26 +83,13 @@
       nixosConfigurations =
         let
           iso_params = {
-            services.xserver.displayManager.autoLogin.user = lib.mkForce "ripxorip";
+            services.xserver.displayManager.autoLogin.user = lib.mkForce "patrik";
             isoImage.squashfsCompression = "gzip -Xcompression-level 1";
           };
         in
         {
           #sudo nixos-rebuild switch --flake ~/dev/ripxonix/#ripxowork
-          ripxostation = lib.nixosSystem {
-            modules = [
-              ./nixos
-              agenix.nixosModules.age
-              talon-nix.nixosModules.talon
-            ];
-            specialArgs = {
-              inherit inputs outputs stateVersion;
-              hostname = "ripxostation";
-              username = "ripxorip";
-              desktop = "gnome";
-            };
-          };
-          ripxowork = lib.nixosSystem {
+          bonkywork = lib.nixosSystem {
             modules = [
               ./nixos
               agenix.nixosModules.age
@@ -190,69 +99,9 @@
             ];
             specialArgs = {
               inherit inputs outputs stateVersion;
-              hostname = "ripxowork";
-              username = "ripxorip";
+              hostname = "bonkywork";
+              username = "patrik";
               desktop = "gnome";
-            };
-          };
-          ripxolab = lib.nixosSystem {
-            modules = [
-              ./nixos
-              agenix.nixosModules.age
-            ];
-            specialArgs = {
-              inherit inputs outputs stateVersion;
-              hostname = "ripxolab";
-              username = "ripxorip";
-              desktop = "gnome";
-            };
-          };
-          vm = lib.nixosSystem {
-            modules = [
-              ./nixos
-              agenix.nixosModules.age
-            ];
-            specialArgs = {
-              inherit inputs outputs stateVersion;
-              hostname = "vm";
-              username = "ripxorip";
-              desktop = "plasma";
-            };
-          };
-          ripxopad = lib.nixosSystem {
-            modules = [
-              ./nixos
-              agenix.nixosModules.age
-            ];
-            specialArgs = {
-              inherit inputs outputs stateVersion;
-              hostname = "ripxopad";
-              username = "ripxorip";
-              desktop = "gnome";
-            };
-          };
-          ripxonode = lib.nixosSystem {
-            modules = [
-              ./nixos
-              agenix.nixosModules.age
-            ];
-            specialArgs = {
-              inherit inputs outputs stateVersion;
-              hostname = "ripxonode";
-              username = "ripxorip";
-              desktop = null;
-            };
-          };
-          mserver = lib.nixosSystem {
-            modules = [
-              ./nixos
-              agenix.nixosModules.age
-            ];
-            specialArgs = {
-              inherit inputs outputs stateVersion;
-              hostname = "mserver";
-              username = "ripxorip";
-              desktop = null;
             };
           };
           # Build using: nix build .#nixosConfigurations.iso-desktop.config.system.build.isoImage 
@@ -265,7 +114,7 @@
               iso_params
               home-manager.nixosModules.home-manager
               {
-                home-manager.users.ripxorip = {
+                home-manager.users.patrik = {
                   imports = [
                     ./home-manager
                   ];
@@ -274,14 +123,14 @@
                   inherit inputs outputs stateVersion darkmode;
                   desktop = "gnome";
                   hostname = "iso-desktop";
-                  username = "ripxorip";
+                  username = "patrik";
                 };
               }
             ];
             specialArgs = {
               inherit inputs outputs stateVersion darkmode;
               hostname = "iso-desktop";
-              username = "ripxorip";
+              username = "patrik";
               desktop = "gnome";
             };
           };
