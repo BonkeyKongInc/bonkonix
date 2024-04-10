@@ -10,13 +10,7 @@
     autoRepeatDelay = 250;
     autoRepeatInterval = 50;
     xkbOptions = "eurosign:e,caps:ctrl_modifier";
-    layout = "rip";
-    extraLayouts.rip = {
-      description = "Ripxorip Colemak DH";
-      languages = [ "en" "se" ];
-      symbolsFile =
-        ./colemak_dh_rip;
-    };
+    layout = "us";
   };
 
 

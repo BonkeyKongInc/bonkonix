@@ -20,9 +20,6 @@
     agenix.url = "github:ryantm/agenix";
     agenix.inputs.nixpkgs.follows = "nixpkgs";
 
-    waveforms.url = "github:ripxorip/waveforms-flake";
-    waveforms.inputs.nixpkgs.follows = "nixpkgs";
-
     talon-nix.url = "github:nix-community/talon-nix";
     talon-nix.inputs.nixpkgs.follows = "nixpkgs";
 
@@ -37,7 +34,6 @@
     , nixos-hardware
     , agenix
     , talon-nix
-    , waveforms
     , darkmode_flag
     , ...
     } @ inputs:
@@ -71,7 +67,7 @@
           pkgs = pkgsFor.x86_64-linux;
           extraSpecialArgs = {
             inherit inputs outputs stateVersion darkmode;
-            desktop = "gnome";
+            desktop = "plasma";
             hostname = "bonkywork";
             platform = "x86_64-linux";
             username = "patrik";
@@ -94,14 +90,13 @@
               ./nixos
               agenix.nixosModules.age
               nixos-hardware.nixosModules.dell-xps-15-9520-nvidia
-              waveforms.nixosModule
               talon-nix.nixosModules.talon
             ];
             specialArgs = {
               inherit inputs outputs stateVersion;
               hostname = "bonkywork";
               username = "patrik";
-              desktop = "gnome";
+              desktop = "plasma";
             };
           };
           # Build using: nix build .#nixosConfigurations.iso-desktop.config.system.build.isoImage 
