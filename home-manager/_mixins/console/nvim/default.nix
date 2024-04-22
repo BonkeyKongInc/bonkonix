@@ -78,29 +78,53 @@ in
     vimdiffAlias = true;
 
     plugins = with pkgs.vimPlugins; [
-      bolt
+      popup-nvim
+      plenary-nvim
+      lualine-nvim
+      nightfox-nvim
+      nvim-cmp
+      cmp-buffer
+      cmp-path
+      cmp-cmdline
+      cmp_luasnip
+      cmp-nvim-lsp
+      cmp-nvim-lua
+      luasnip
       nvim-lspconfig
+      #lsp installer - not found
+      #pounce - not found
+      telescope-nvim
+      neoscroll-nvim
+      #key-menu - not found
+      #editorconfig - not found
       gitsigns-nvim
-      catppuccin-nvim
-      nvim-compe
-      vim-fugitive
-      suda-vim
-      nvim-autopairs
-      vim-ripgrep
-      github-nvim-theme
+      #telescope-changed-files - not found
+      fzf-vim
+
+      #----- ripxorip plugins -----
+      #bolt
+      #nvim-lspconfig
+      #gitsigns-nvim
+      #catppuccin-nvim
+      #nvim-compe
+      #vim-fugitive
+      #suda-vim
+      #nvim-autopairs
+      #vim-ripgrep
+      #github-nvim-theme
       # FIXME These shall be created by me
       #vim-ripgrep
       #ripxorip/aerojump
       #ripxorip/utils
-      editorconfig-vim
-      neoformat
-      lsp_signature-nvim
-      vim-vsnip
-      nvim-treesitter.withAllGrammars
-      playground
-      fzf-vim
-      vim-tmux-navigator
-      vim-unimpaired
+      #editorconfig-vim
+      #neoformat
+      #lsp_signature-nvim
+      #vim-vsnip
+      #nvim-treesitter.withAllGrammars
+      #playground
+      #fzf-vim
+      #vim-tmux-navigator
+      #vim-unimpaired
     ];
 
     extraPackages = with pkgs; [
