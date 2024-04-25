@@ -88,7 +88,7 @@ return require('packer').startup(function()
       require('gitsigns').setup()
     end
   }
-  use { "axkirillov/telescope-changed-files" }
-  require('telescope').load_extension('changed_files')
+  --use { "axkirillov/telescope-changed-files" }
+  --require('telescope').load_extension('changed_files')
 
 end)
