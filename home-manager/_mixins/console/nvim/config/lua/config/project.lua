@@ -1,8 +1,1 @@
-require'telescope'.load_extension('project')
-
-vim.api.nvim_set_keymap(
-	'n',
-	'<leader>pp',
-	":lua require'telescope'.extensions.project.project{ change_dir = true }<CR>",
-	{noremap = true, silent = true}
-)
+/nix/store/7ny6wv08f7c953jhlk9blqpz4izgdr8v-home-manager-files/.config/nvim/lua/config/project.lua

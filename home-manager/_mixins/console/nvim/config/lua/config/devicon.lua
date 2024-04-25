@@ -1,5 +1,1 @@
-require'nvim-web-devicons'.setup {
- -- globally enable default icons (default to false)
- -- will get overriden by `get_icons` option
- default = true;
-}
+/nix/store/7ny6wv08f7c953jhlk9blqpz4izgdr8v-home-manager-files/.config/nvim/lua/config/devicon.lua
