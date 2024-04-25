@@ -146,7 +146,7 @@ in
   # FIXME Continue here, by generating the colorscheme.lua file according to the darkmode variable
   # It shall be written and probably be removed from the local .config folder
   xdg.configFile.nvim = {
-    source = ./config;
+    source = ./patrik;
     recursive = true;
   };
 }
