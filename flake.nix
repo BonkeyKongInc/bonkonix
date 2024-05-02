@@ -81,7 +81,7 @@
           extraSpecialArgs = {
             inherit inputs outputs stateVersion darkmode;
             desktop = "plasma";
-            hostname = "bonkywork";
+            hostname = "bonkyhome";
             platform = "x86_64-linux";
             username = "patrik";
           };
