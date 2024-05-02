@@ -13,6 +13,7 @@
   hardware.bluetooth.enable = true;
 
   boot.loader.grub.enable = true;
+  boot.loader.grub.device = "/dev/sda";
   boot.loader.efiSupport = false;
 
   boot.initrd.availableKernelModules = [ "xhci_pci" "thunderbolt" "vmd" "nvme" "usb_storage" "sd_mod" "rtsx_pci_sdmmc" ];
