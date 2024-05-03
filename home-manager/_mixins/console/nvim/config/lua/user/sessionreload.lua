@@ -1,2 +1,0 @@
---vim.api.nvim_create_autocmd("VimEnter", { command = "source ~/defaultsession.vim",} )
---vim.api.nvim_create_autocmd("VimLeavePre", { command = "mksession! ~/defaultsession.vim",} )

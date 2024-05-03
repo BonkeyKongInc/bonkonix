@@ -22,19 +22,19 @@ return require('packer').startup(function()
   --  "iamcco/markdown-preview.nvim",
   --  run = function() vim.fn["mkdp#util#install"]() end,
   --})
-  use {'iamcco/markdown-preview.nvim', run = 'cd app && npm install', cmd = 'MarkdownPreview'}
+  --use {'iamcco/markdown-preview.nvim', run = 'cd app && npm install', cmd = 'MarkdownPreview'}
 
   -- Color scheme
 	use "lunarvim/colorschemes" -- A bunch of colorschemes you can try out
   use "EdenEast/nightfox.nvim" -- Packer
   -- cmp plugins
-  use "hrsh7th/nvim-cmp" -- The completion plugin
-  use "hrsh7th/cmp-buffer" -- buffer completions
-  use "hrsh7th/cmp-path" -- path completions
-  use "hrsh7th/cmp-cmdline" -- cmdline completions
-  use "saadparwaiz1/cmp_luasnip" -- snippet completions
-  use "hrsh7th/cmp-nvim-lsp"
-  use "hrsh7th/cmp-nvim-lua"
+  --use "hrsh7th/nvim-cmp" -- The completion plugin
+  --use "hrsh7th/cmp-buffer" -- buffer completions
+  --use "hrsh7th/cmp-path" -- path completions
+  --use "hrsh7th/cmp-cmdline" -- cmdline completions
+  --use "saadparwaiz1/cmp_luasnip" -- snippet completions
+  --use "hrsh7th/cmp-nvim-lsp"
+ -- use "hrsh7th/cmp-nvim-lua"
 
   --use 'm4xshen/autoclose.nvim'
   use {
@@ -42,30 +42,30 @@ return require('packer').startup(function()
       config = function() require("nvim-autopairs").setup {} end
   }
   -- snippets
-  use "L3MON4D3/LuaSnip" --snippet engine
+  --use "L3MON4D3/LuaSnip" --snippet engine
   use "rafamadriz/friendly-snippets" -- a bunch of snippets to use
 	
   -- LSP
   use "neovim/nvim-lspconfig" -- enable LSP
-  use "williamboman/nvim-lsp-installer" -- simple to use language server installer
+  -- use "williamboman/nvim-lsp-installer" -- simple to use language server installer
 
   use "rlane/pounce.nvim"
   -- Telescope
   use "nvim-telescope/telescope.nvim"
   use 'nvim-telescope/telescope-media-files.nvim'
   -- Startup screen
-  use {
-    "startup-nvim/startup.nvim",
-    requires = {"nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim"},
-    config = function()
-      require"startup".setup()
-    end
-  }
+  --use {
+  --  "startup-nvim/startup.nvim",
+  --  requires = {"nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim"},
+  --  config = function()
+  --    require"startup".setup()
+  --  end
+  --}
 
   -- Neoscroll
   use 'karb94/neoscroll.nvim'
   -- Command map finder
-  use 'linty-org/key-menu.nvim'
+  -- use 'linty-org/key-menu.nvim'
   -- Treesitter
   use {
     "nvim-treesitter/nvim-treesitter",
@@ -75,9 +75,9 @@ return require('packer').startup(function()
 	use 'gpanders/editorconfig.nvim'
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
-  if PACKER_BOOTSTRAP then
-    require("packer").sync()
-  end
+  --if PACKER_BOOTSTRAP then
+  --  require("packer").sync()
+  --end
   use { "junegunn/fzf", run = ":call fzf#install()" }
 	use 'peterhoeg/vim-qml'
 

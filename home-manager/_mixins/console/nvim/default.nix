@@ -94,12 +94,14 @@ in
       #lsp installer - not found
       #pounce - not found
       telescope-nvim
+      nvim-treesitter.withAllGrammars
       neoscroll-nvim
       #key-menu - not found
-      #editorconfig - not found
+      editorconfig-nvim
       gitsigns-nvim
       #telescope-changed-files - not found
       fzf-vim
+      packer-nvim
 
       #----- ripxorip plugins -----
       #bolt
@@ -132,7 +134,7 @@ in
     ];
 
     extraConfig = ''
-      :luafile ~/.config/nvim/lua/init.lua
+      :luafile ~/.config/nvim/init.lua
     '';
   };
 
