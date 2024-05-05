@@ -77,7 +77,7 @@
     gomuks
     obs-studio
     remmina
-    kicad
+    #kicad
     prusa-slicer
     wireshark
     reaper

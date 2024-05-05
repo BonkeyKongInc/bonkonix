@@ -1,30 +1,14 @@
--- Map leader to space
-vim.g.mapleader = ','
-
--- Sensible defaults
-require('settings')
-
--- Install plugins
--- require('plugins')
-
--- My custom lua scripts
-require('ripxorip')
-
--- Key mappings
-require('keymappings')
-
--- LSP
-require('lang')
-
--- DAP
--- require('dbg')
-
--- Another option is to groups configuration in one folder
-require('config')
-
-require('gitsigns').setup()
-
--- OR you can invoke them individually here
--- require('config.colorscheme')  -- color scheme
--- require('config.completion')   -- completion
--- require('config.fugitive')     -- fugitive
+require "user.options"
+require "user.keymaps"
+require "user.plugins"
+require "user.colorscheme"
+require "user.cmp"
+require "user.lsp"
+require "user.telescope"
+require "user.neoscroll"
+require "user.nvim-tree"
+require "user.lualine"
+require "user.treesitter"
+require "user.sessionreload"
+require "user.key-menu"
+require "user.gitsigns"
