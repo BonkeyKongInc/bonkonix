@@ -1,51 +1,11 @@
 local fn = vim.fn
 
--- Automatically install packer
-local install_path = fn.stdpath "data" .. "/site/pack/packer/start/packer.nvim"
-if fn.empty(fn.glob(install_path)) > 0 then
-  PACKER_BOOTSTRAP = fn.system {
-    "git",
-    "clone",
-    "--depth",
-    "1",
-    "https://github.com/wbthomason/packer.nvim",
-    install_path,
-  }
-  print "Installing packer close and reopen Neovim..."
-  vim.cmd [[packadd packer.nvim]]
-end
+return require('packer').startup(function()
 
--- Autocommand that reloads neovim whenever you save the plugins.lua file
-vim.cmd [[
-  augroup packer_user_config
-    autocmd!
-    autocmd BufWritePost plugins.lua source <afile> | PackerSync
-  augroup end
-]]
-
--- Use a protected call so we don't error out on first use
-local status_ok, packer = pcall(require, "packer")
-if not status_ok then
-  return
-end
-
--- Have packer use a popup window
-packer.init {
-  display = {
-    open_fn = function()
-      return require("packer.util").float { border = "rounded" }
-    end,
-  },
-}
-
--- Install your plugins here
-return packer.startup(function(use)
   -- My plugins here
-  use "wbthomason/packer.nvim" -- Have packer manage itself
+  use {'wbthomason/packer.nvim', opt = true}
   use "nvim-lua/popup.nvim" -- An implementation of the Popup API from vim in Neovim
   use "nvim-lua/plenary.nvim" -- Useful lua functions used ny lots of plugins
--- use "kyazdani42/nvim-web-devicons"
---  use "kyazdani42/nvim-tree.lua"
   use {
     'nvim-tree/nvim-tree.lua',
     requires = {
@@ -61,16 +21,16 @@ return packer.startup(function(use)
   --  "iamcco/markdown-preview.nvim",
   --  run = function() vim.fn["mkdp#util#install"]() end,
   --})
-  use {'iamcco/markdown-preview.nvim', run = 'cd app && npm install', cmd = 'MarkdownPreview'}
+  --use {'iamcco/markdown-preview.nvim', run = 'cd app && npm install', cmd = 'MarkdownPreview'}
 
   -- Color scheme
 	use "lunarvim/colorschemes" -- A bunch of colorschemes you can try out
   use "EdenEast/nightfox.nvim" -- Packer
   -- cmp plugins
   use "hrsh7th/nvim-cmp" -- The completion plugin
-  use "hrsh7th/cmp-buffer" -- buffer completions
-  use "hrsh7th/cmp-path" -- path completions
-  use "hrsh7th/cmp-cmdline" -- cmdline completions
+  --use "hrsh7th/cmp-buffer" -- buffer completions
+  --use "hrsh7th/cmp-path" -- path completions
+  --use "hrsh7th/cmp-cmdline" -- cmdline completions
   use "saadparwaiz1/cmp_luasnip" -- snippet completions
   use "hrsh7th/cmp-nvim-lsp"
   use "hrsh7th/cmp-nvim-lua"
@@ -82,13 +42,13 @@ return packer.startup(function(use)
   }
   -- snippets
   use "L3MON4D3/LuaSnip" --snippet engine
-  use "rafamadriz/friendly-snippets" -- a bunch of snippets to use
+  --use "rafamadriz/friendly-snippets" -- a bunch of snippets to use
 	
   -- LSP
   use "neovim/nvim-lspconfig" -- enable LSP
   use "williamboman/nvim-lsp-installer" -- simple to use language server installer
 
-  use "rlane/pounce.nvim"
+  --use "rlane/pounce.nvim"
   -- Telescope
   use "nvim-telescope/telescope.nvim"
   use 'nvim-telescope/telescope-media-files.nvim'
@@ -104,7 +64,7 @@ return packer.startup(function(use)
   -- Neoscroll
   use 'karb94/neoscroll.nvim'
   -- Command map finder
-  use 'linty-org/key-menu.nvim'
+  --use 'linty-org/key-menu.nvim'
   -- Treesitter
   use {
     "nvim-treesitter/nvim-treesitter",
@@ -114,11 +74,11 @@ return packer.startup(function(use)
 	use 'gpanders/editorconfig.nvim'
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
-  if PACKER_BOOTSTRAP then
-    require("packer").sync()
-  end
+  --if PACKER_BOOTSTRAP then
+  --  require("packer").sync()
+  --end
   use { "junegunn/fzf", run = ":call fzf#install()" }
-	use 'peterhoeg/vim-qml'
+	--use 'peterhoeg/vim-qml'
 
   -- git
   use { 'lewis6991/gitsigns.nvim',
@@ -127,7 +87,7 @@ return packer.startup(function(use)
       require('gitsigns').setup()
     end
   }
-  use { "axkirillov/telescope-changed-files" }
-  require('telescope').load_extension('changed_files')
+  --use { "axkirillov/telescope-changed-files" }
+  --require('telescope').load_extension('changed_files')
 
 end)

@@ -10,6 +10,7 @@ require("user.lsp.handlers").setup()
 local lspconfig = require('lspconfig')
 lspconfig.clangd.setup {on_attach = on_attach}
 lspconfig.pyright.setup {on_attach = on_attach}
+lspconfig.lua_ls.setup {on_attach = on_attach}
 --require'lspconfig'.pyright.setup{}
 
 --require("user.lsp.lsp-installer")

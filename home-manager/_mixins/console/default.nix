@@ -33,6 +33,7 @@
       dig
       matrix-sh
       wl-clipboard
+      gcc
     ];
 
     sessionVariables = {
