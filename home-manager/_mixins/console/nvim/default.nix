@@ -1,12 +1,21 @@
 { pkgs, darkmode, config, ... }:
   let
-  bolt = pkgs.vimUtils.buildVimPlugin {
-    name = "bolt";
+  pounce = pkgs.vimUtils.buildVimPlugin {
+    name = "pounce";
     src = pkgs.fetchFromGitHub {
-      owner = "ripxorip";
-      repo = "bolt.nvim";
-      rev = "aecf421d9916c2480bd2bd1f86560634379cc671";
-      hash = "sha256-z7/3+/WMlJGQf8VzGgPTpjydFbQsDdCm6IftnZ0K6k4=";
+      owner = "rlane";
+      repo = "pounce.nvim";
+      rev = "0c044cad69571d57d8f64a41cca95332859b6abc";
+      hash = "sha256-ixzknnWkCJ+DhooYv7QeVou4ur0/bump3cWgD3O3wV0=";
+    };
+  };
+  moonfly = pkgs.vimUtils.buildVimPlugin {
+    name = "moonfly";
+    src = pkgs.fetchFromGitHub {
+      owner = "bluz71";
+      repo = "vim-moonfly-colors";
+      rev = "d43001d901599ba7273dc5700db26948ffc0bac6";
+      hash = "sha256-fNBpmc/y8Okv+y/ho1bL6PIiHdG47HfuvdVnuU1WtlU=";
     };
   };
   in 
@@ -33,8 +42,9 @@
         luasnip
         nvim-lspconfig
         #lsp installer - not found
-        #pounce - not found
+        pounce
         telescope-nvim
+        telescope-live-grep-args-nvim
         neoscroll-nvim
         #key-menu - not found
         #editorconfig - not found
@@ -42,6 +52,7 @@
         #telescope-changed-files - not found
         fzf-vim
         nvim-web-devicons
+        moonfly
 
         #----- ripxorip plugins -----
         #bolt

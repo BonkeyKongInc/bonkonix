@@ -15,6 +15,7 @@ return require('packer').startup(function()
   }
   use 'nvim-lualine/lualine.nvim'
   use 'tpope/vim-fugitive'
+  use 'ripxorip/aerojump.nvim'
   -- Markdown preview
   -- install without yarn or npm
   --use({
@@ -48,7 +49,7 @@ return require('packer').startup(function()
   use "neovim/nvim-lspconfig" -- enable LSP
   use "williamboman/nvim-lsp-installer" -- simple to use language server installer
 
-  --use "rlane/pounce.nvim"
+  use "rlane/pounce.nvim"
   -- Telescope
   use "nvim-telescope/telescope.nvim"
   use 'nvim-telescope/telescope-media-files.nvim'

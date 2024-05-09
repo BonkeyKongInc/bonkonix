@@ -6,6 +6,8 @@ end
 --telescope.load_extension('media_files')
 
 local actions = require "telescope.actions"
+local lga_actions = require("telescope-live-grep-args.actions")
+local utils = require("telescope.utils")
 
 telescope.setup {
   defaults = {
@@ -51,8 +53,8 @@ telescope.setup {
         ["<CR>"] = actions.select_default,
         ["<C-x>"] = actions.select_horizontal,
         ["<C-v>"] = actions.select_vertical,
+        ["v"] = actions.select_vertical,
         ["<C-t>"] = actions.select_tab,
-        ["t"] = actions.select_tab,
 
         ["<Tab>"] = actions.toggle_selection + actions.move_selection_worse,
         ["<S-Tab>"] = actions.toggle_selection + actions.move_selection_better,
@@ -95,7 +97,21 @@ telescope.setup {
         -- defaults to {"png", "jpg", "mp4", "webm", "pdf"}
         filetypes = {"png", "webp", "jpg", "jpeg"},
         find_cmd = "fzf" -- find command (defaults to `fd`)
-      }
+    },
+    live_grep_args = {
+      auto_quoting = true, -- enable/disable auto-quoting
+      -- define mappings, e.g.
+      mappings = { -- extend mappings
+        i = {
+          ["<C-u>"] = lga_actions.quote_prompt({ postfix =  " " .. utils.buffer_dir() }),
+          ["<C-i>"] = lga_actions.quote_prompt({ postfix = " --iglob  **/*/**" }),
+        },
+      },
+      -- ... also accepts theme settings, for example:
+      -- theme = "dropdown", -- use dropdown theme
+      -- theme = { }, -- use own theme spec
+      -- layout_config = { mirror=true }, -- mirror preview pane
+    }
     -- Your extension configuration goes here:
     -- extension_name = {
     --   extension_config_key = value,
