@@ -8,6 +8,7 @@
     ../_mixins/services/pipewire.nix
     ../_mixins/virt
     ../_mixins/streaming
+    ../_mixins/firefox
   ];
 
   hardware.bluetooth.enable = true;
