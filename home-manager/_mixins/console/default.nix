@@ -7,7 +7,7 @@
   ];
   home = {
     file = {
-      "${config.xdg.configHome}/starship.toml".text = builtins.readFile ./starship.toml;
+      "${config.xdg.configHome}/starship.toml".text = builtins.readFile ./newstarship.toml;
     };
 
     packages = with pkgs; [
