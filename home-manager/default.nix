@@ -14,6 +14,7 @@ in
 
     # You can also split up your configuration and import pieces of it here:
     ./_mixins/console
+    ./_mixins/desktop/plasma-conf
   ]
   ++ lib.optional (builtins.isString desktop) ./_mixins/desktop
   ++ lib.optional (builtins.isPath (./. + "/_mixins/users/${username}")) ./_mixins/users/${username};
@@ -53,6 +54,11 @@ in
       # Workaround for https://github.com/nix-community/home-manager/issues/2942
       allowUnfreePredicate = _: true;
     };
+    #plasma-manager = {
+    #  url = "github:pjones/plasma-manager";
+    # #inputs.nixpkgs.follows = "nixpkgs";
+     # #inputs.home-manager.follows = "home-manager";
+   # };
   };
 
   nix = {

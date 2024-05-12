@@ -1,31 +1,94 @@
 { pkgs, darkmode, config, ... }:
-let
-  bolt = pkgs.vimUtils.buildVimPlugin {
-    name = "bolt";
+  let
+  pounce = pkgs.vimUtils.buildVimPlugin {
+    name = "pounce";
     src = pkgs.fetchFromGitHub {
-      owner = "ripxorip";
-      repo = "bolt.nvim";
-      rev = "aecf421d9916c2480bd2bd1f86560634379cc671";
-      hash = "sha256-z7/3+/WMlJGQf8VzGgPTpjydFbQsDdCm6IftnZ0K6k4=";
+      owner = "rlane";
+      repo = "pounce.nvim";
+      rev = "0c044cad69571d57d8f64a41cca95332859b6abc";
+      hash = "sha256-ixzknnWkCJ+DhooYv7QeVou4ur0/bump3cWgD3O3wV0=";
     };
   };
-  github-nvim-theme = pkgs.vimUtils.buildVimPlugin {
-    name = "GitHub Light";
+  moonfly = pkgs.vimUtils.buildVimPlugin {
+    name = "moonfly";
     src = pkgs.fetchFromGitHub {
-      owner = "projekt0n";
-      repo = "github-nvim-theme";
-      rev = "806903c1b66a6b29347871922acd7d830a9d5c6a";
-      sha256 = "sha256-F0oDNVFw1yExgGD0hPWAvTgi55H/gY0i072nSCs33j4=";
+      owner = "bluz71";
+      repo = "vim-moonfly-colors";
+      rev = "d43001d901599ba7273dc5700db26948ffc0bac6";
+      hash = "sha256-fNBpmc/y8Okv+y/ho1bL6PIiHdG47HfuvdVnuU1WtlU=";
     };
   };
-  vim-ripgrep = pkgs.vimUtils.buildVimPlugin {
-    name = "vim-ripgrep-2021-11-30";
-    src = pkgs.fetchFromGitHub {
-      owner = "jremmen";
-      repo = "vim-ripgrep";
-      rev = "2bb2425387b449a0cd65a54ceb85e123d7a320b8";
-      sha256 = "sha256-OvQPTEiXOHI0uz0+6AVTxyJ/TUMg6kd3BYTAbnCI7W8=";
+  in 
+  {
+    programs.neovim = {
+      enable = true;
+      viAlias = true;
+      vimAlias = true;
+      vimdiffAlias = true;
+
+      plugins = with pkgs.vimPlugins; [
+        packer-nvim
+        popup-nvim
+        plenary-nvim
+        lualine-nvim
+        nightfox-nvim
+        nvim-cmp
+        cmp-buffer
+        cmp-path
+        cmp-cmdline
+        cmp_luasnip
+        cmp-nvim-lsp
+        cmp-nvim-lua
+        luasnip
+        nvim-lspconfig
+        #lsp installer - not found
+        pounce
+        telescope-nvim
+        telescope-live-grep-args-nvim
+        neoscroll-nvim
+        #key-menu - not found
+        #editorconfig - not found
+        gitsigns-nvim
+        #telescope-changed-files - not found
+        fzf-vim
+        nvim-web-devicons
+        moonfly
+
+        #----- ripxorip plugins -----
+        #bolt
+        #nvim-lspconfig
+        #gitsigns-nvim
+        #catppuccin-nvim
+        #nvim-compe
+        #vim-fugitive
+        #suda-vim
+        #nvim-autopairs
+        #vim-ripgrep
+        #github-nvim-theme
+        # FIXME These shall be created by me
+        #vim-ripgrep
+        #ripxorip/aerojump
+        #ripxorip/utils
+        #editorconfig-vim
+        #neoformat
+        #lsp_signature-nvim
+        #vim-vsnip
+        #nvim-treesitter.withAllGrammars
+        #playground
+        #fzf-vim
+        #vim-tmux-navigator
+        #vim-unimpaired
+      ];
+
+      extraPackages = with pkgs; [
+        tree-sitter
+      ];
+
+      extraConfig = ''
+        :luafile ~/.config/nvim/init.lua
+      '';
     };
+<<<<<<< HEAD
   };
 
   colorscheme_darkmode = ''
@@ -137,18 +200,10 @@ in
       :luafile ~/.config/nvim/init.lua
     '';
   };
-
-
-  home = {
-    file = {
-      "${config.xdg.configHome}/nvim/lua/config/colorscheme.lua".text = "${nvim_colorscheme}";
+    # FIXME Continue here, by generating the colorscheme.lua file according to the darkmode variable
+    # It shall be written and probably be removed from the local .config folder
+    xdg.configFile.nvim = {
+      source = ./config;
+      recursive = true;
     };
-  };
-
-  # FIXME Continue here, by generating the colorscheme.lua file according to the darkmode variable
-  # It shall be written and probably be removed from the local .config folder
-  xdg.configFile.nvim = {
-    source = ./patrik;
-    recursive = true;
-  };
 }

@@ -18,7 +18,6 @@ endif
 # FIXME No idea why I have to issue `nix profile list` first, if I don't, I get
 # no suitable profile found from home-manager?
 home_build:
-	sudo chown -R ripxorip:users /home/ripxorip
 	nix profile list
 	home-manager build -b backup --flake ~/bonk/bonkonix/#${USER}@${HOSTNAME}
 	-home-manager switch -b backup --flake ~/bonk/bonkonix/#${USER}@${HOSTNAME}

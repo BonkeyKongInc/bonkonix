@@ -34,6 +34,7 @@
       matrix-sh
       wl-clipboard
       gitg
+      gcc
     ];
 
     sessionVariables = {

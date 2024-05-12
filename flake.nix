@@ -73,6 +73,19 @@
             username = "patrik";
           };
         };
+        "patrik@bonkyhome" = lib.homeManagerConfiguration {
+          modules = [
+            ./home-manager
+          ];
+          pkgs = pkgsFor.x86_64-linux;
+          extraSpecialArgs = {
+            inherit inputs outputs stateVersion darkmode;
+            desktop = "plasma";
+            hostname = "bonkyhome";
+            platform = "x86_64-linux";
+            username = "patrik";
+          };
+        };
       };
 
       # The NixOS configurations
@@ -84,7 +97,6 @@
           };
         in
         {
-          #sudo nixos-rebuild switch --flake ~/dev/ripxonix/#ripxowork
           bonkywork = lib.nixosSystem {
             modules = [
               ./nixos
@@ -95,6 +107,20 @@
             specialArgs = {
               inherit inputs outputs stateVersion;
               hostname = "bonkywork";
+              username = "patrik";
+              desktop = "plasma";
+            };
+          };
+          bonkyhome = lib.nixosSystem {
+            modules = [
+              ./nixos
+              agenix.nixosModules.age
+              #nixos-hardware.nixosModules.dell-xps-15-9520-nvidia
+              talon-nix.nixosModules.talon
+            ];
+            specialArgs = {
+              inherit inputs outputs stateVersion;
+              hostname = "bonkyhome";
               username = "patrik";
               desktop = "plasma";
             };
