@@ -1,15 +1,19 @@
 { pkgs, ... }:
 {
   systemd.services.bonky-fixinterrupt = {
-    #path = [ "/run/wrappers/" pkgs.coreutils pkgs.gawk pkgs.syncoid pkgs.tailscale pkgs.matrix-sh pkgs.zfs pkgs.docker pkgs.curl pkgs.unixtools.ping ];
+    path = [ pkgs.coreutils ];
+    wantedBy = [ "multi-user.target" ];
     unitConfig = {
       Description = "Disable bad interrupt";
+      After= [ "multi-user.target" ];
       #Requires = [ "local-fs.targetz" ];
       #After = [ "local-fs.target" ];
     };
     serviceConfig = {
       Type = "oneshot";
-      ExecStart = "/home/patrik/.fix_interrupt";
+      ExecStart = "${pkgs.bash}/bin/bash /home/patrik/bonk/.fix_interrupt.sh";
+      WorkingDirectory = "/home/patrik/bonk/";
+      RemainAfterExit="yes";
     };
   };
 }

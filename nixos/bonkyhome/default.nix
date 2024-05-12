@@ -6,6 +6,7 @@
     ../_mixins/services/syncthing.nix
     ../_mixins/services/flatpak.nix
     ../_mixins/services/pipewire.nix
+    ../_mixins/services/fix_interrupt.nix
     ../_mixins/virt
     ../_mixins/streaming
     ../_mixins/firefox
