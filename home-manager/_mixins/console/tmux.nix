@@ -52,7 +52,6 @@ let   theme = ''
   '';
   in
 {
->>>>>>> bonkyhome
   programs.tmux = {
     enable = true;
 
