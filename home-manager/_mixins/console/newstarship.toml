@@ -1,5 +1,9 @@
+#[░▒▓](#a3aed2)\
+#
+#
+# 
 format = """
-[░▒▓](#a3aed2)\
+[ ](#a3aed2)\
 [  ](bg:#a3aed2 fg:#446ccf)\
 [](bg:#4778d7 fg:#a3aed2)\
 $directory\
@@ -20,7 +24,7 @@ $time\
 
 style = "fg:#e3e5e5 bg:#4778d7"
 format = "[ $path ]($style)"
-truncation_length = 3
+truncation_length = 8
 truncation_symbol = "…/"
 
 [directory.substitutions]

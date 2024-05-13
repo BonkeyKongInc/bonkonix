@@ -47,10 +47,11 @@ in
     };
     initExtra = ''
       export PATH=~/tools:~/dev/workspace/tools:/home/ripxorip/dev/ptools:/home/ripxorip/dev/tools:~/.local/bin:$PATH:~/.cargo/bin
-      alias ws="cd ~/dev/workspace"
+      alias ws="cd ~/dev/"
       alias c="cd"
       alias ..="cd .."
       alias v="nvim"
+      alias v.="nvim ."
       alias k="/home/ripxorip/dev/kde/build/kde/applications/kate/bin/kate"
       alias l="exa -la --git --icons"
       alias cat='bat'
@@ -107,8 +108,9 @@ in
       setopt HIST_BEEP
 
       # Accpept suggestions with space
-      bindkey '^ ' autosuggest-accept
+      bindkey '^ ' forward-word 
       bindkey '^o' autosuggest-accept
+      bindkey '^H' backward-kill-word
       # Reloads the history whenever you use it
       setopt share_history
 
@@ -166,6 +168,7 @@ in
       bindkey '^F' fzf-file-widget
       bindkey "^P" up-line-or-search
       bindkey "^N" down-line-or-search
+      bindkey -s "^M" '\e' 
 
       mkdir -p ~/.history
       # Patch history to a shared directory

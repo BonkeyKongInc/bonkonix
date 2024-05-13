@@ -34,9 +34,9 @@
       matrix-sh
       wl-clipboard
       gitg
-      #gcc
+      gcc
       llpp
-      gfortran
+      #gfortran
       speedcrunch
       python311Packages.numpy
     ];
