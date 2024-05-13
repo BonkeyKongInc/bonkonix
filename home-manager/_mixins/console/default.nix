@@ -34,6 +34,11 @@
       matrix-sh
       wl-clipboard
       gitg
+      #gcc
+      llpp
+      gfortran
+      speedcrunch
+      python311Packages.numpy
     ];
 
     sessionVariables = {
