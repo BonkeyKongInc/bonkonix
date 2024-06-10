@@ -29,7 +29,7 @@
       plugins = with pkgs.vimPlugins; [
         packer-nvim
         popup-nvim
-        plenary-nvim
+        #plenary-nvim
         lualine-nvim
         nightfox-nvim
         nvim-cmp
@@ -37,19 +37,17 @@
         cmp-path
         cmp-cmdline
         cmp_luasnip
-        cmp-nvim-lsp
-        cmp-nvim-lua
-        luasnip
+        #cmp-nvim-lsp
+        #cmp-nvim-lua
+        #luasnip
         nvim-lspconfig
         #lsp installer - not found
         pounce
         telescope-nvim
         telescope-live-grep-args-nvim
         neoscroll-nvim
-        #key-menu - not found
-        #editorconfig - not found
         gitsigns-nvim
-        #telescope-changed-files - not found
+        nvim-treesitter.withAllGrammars
         fzf-vim
         nvim-web-devicons
         moonfly

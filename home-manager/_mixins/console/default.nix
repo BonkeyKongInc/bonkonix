@@ -33,13 +33,21 @@
       dig
       matrix-sh
       wl-clipboard
-      gitg
+#      gitFull
+     # gitg
       gcc
       llpp
       #gfortran
       speedcrunch
       python311Packages.numpy
+      python311Packages.libxml2
+      python311Packages.libxslt
+      libxslt
+      libxml2
+      cmake
+      libclang
     ];
+
 
     sessionVariables = {
       EDITOR = "vim";

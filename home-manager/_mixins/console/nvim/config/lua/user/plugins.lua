@@ -6,6 +6,7 @@ return require('packer').startup(function()
   use {'wbthomason/packer.nvim', opt = true}
   use "nvim-lua/popup.nvim" -- An implementation of the Popup API from vim in Neovim
   use "nvim-lua/plenary.nvim" -- Useful lua functions used ny lots of plugins
+  use "nvim-tree/nvim-web-devicons" -- Useful lua functions used ny lots of plugins
   use {
     'nvim-tree/nvim-tree.lua',
     requires = {
@@ -15,7 +16,6 @@ return require('packer').startup(function()
   }
   use 'nvim-lualine/lualine.nvim'
   use 'tpope/vim-fugitive'
-  use 'ripxorip/aerojump.nvim'
   -- Markdown preview
   -- install without yarn or npm
   --use({
@@ -25,34 +25,34 @@ return require('packer').startup(function()
   --use {'iamcco/markdown-preview.nvim', run = 'cd app && npm install', cmd = 'MarkdownPreview'}
 
   -- Color scheme
-	use "lunarvim/colorschemes" -- A bunch of colorschemes you can try out
+	--use "lunarvim/colorschemes" -- A bunch of colorschemes you can try out
   use "EdenEast/nightfox.nvim" -- Packer
   -- cmp plugins
   use "hrsh7th/nvim-cmp" -- The completion plugin
-  --use "hrsh7th/cmp-buffer" -- buffer completions
-  --use "hrsh7th/cmp-path" -- path completions
-  --use "hrsh7th/cmp-cmdline" -- cmdline completions
+  use "hrsh7th/cmp-buffer" -- buffer completions
+  use "hrsh7th/cmp-path" -- path completions
+  use "hrsh7th/cmp-cmdline" -- cmdline completions
   use "saadparwaiz1/cmp_luasnip" -- snippet completions
   use "hrsh7th/cmp-nvim-lsp"
-  use "hrsh7th/cmp-nvim-lua"
+  --use "hrsh7th/cmp-nvim-lua"
 
   --use 'm4xshen/autoclose.nvim'
-  use {
-    "windwp/nvim-autopairs",
-      config = function() require("nvim-autopairs").setup {} end
-  }
+  --use {
+  --  "windwp/nvim-autopairs",
+  --    config = function() require("nvim-autopairs").setup {} end
+  --}
   -- snippets
-  use "L3MON4D3/LuaSnip" --snippet engine
+  --use "L3MON4D3/LuaSnip" --snippet engine
   --use "rafamadriz/friendly-snippets" -- a bunch of snippets to use
 	
   -- LSP
-  use "neovim/nvim-lspconfig" -- enable LSP
-  use "williamboman/nvim-lsp-installer" -- simple to use language server installer
+  --use "neovim/nvim-lspconfig" -- enable LSP
+  --use "williamboman/nvim-lsp-installer" -- simple to use language server installer
 
   use "rlane/pounce.nvim"
   -- Telescope
   use "nvim-telescope/telescope.nvim"
-  use 'nvim-telescope/telescope-media-files.nvim'
+  --use 'nvim-telescope/telescope-media-files.nvim'
   -- Startup screen
   use {
     "startup-nvim/startup.nvim",

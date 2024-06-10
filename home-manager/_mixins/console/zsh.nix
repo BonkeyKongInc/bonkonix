@@ -91,6 +91,23 @@ in
 
       alias markdown_preview="grip -b"
 
+      alias tm='tmux'
+      alias buildpx4="./Tools/docker_run.sh 'make px4_fmu-v5_multicopter'"
+      alias buildpx4io="./Tools/docker_run.sh 'make px4io_update'"
+      alias buildpx4all="./Tools/docker_run.sh 'make px4io_update' && ./Tools/docker_run.sh 'make px4_fmu-v5_multicopter'"
+      alias loadpx4="./Tools/px_uploader.py build/px4_fmu-v5_multicopter/px4_fmu-v5_multicopter.px4 --port /dev/ttyACM0"
+      alias pvenv="./.venv/bin/python"
+      alias autlog="cd ~/dev/AirolitUlogTool/ && .venv/bin/python main.py"
+      alias nv.="nvim ."
+      alias gk="gitk --all"
+      alias gito="git log --oneline --graph --color --all --decorate --pretty"
+      alias gltags="git tag --merged HEAD --sort=-taggerdate"
+      alias gitol="git log --oneline --graph --color --ancestry-path=HEAD --decorate --pretty"
+      alias gts='git status'
+      alias bp='btop'
+      alias lasttag='git describe --tags --abbrev=0'
+      alias mavsh='~/dev/px4_logger_tester/.venv/bin/python ~/dev/px4_logger_tester/mavlink_shell.py'
+
       bindkey -v
       # bindkey ii vi-cmd-mode
       # Appends every command to the history file once it is executed
@@ -168,7 +185,7 @@ in
       bindkey '^F' fzf-file-widget
       bindkey "^P" up-line-or-search
       bindkey "^N" down-line-or-search
-      bindkey -s "^M" '\e' 
+      #bindkey -s "^M" '\e' 
 
       mkdir -p ~/.history
       # Patch history to a shared directory

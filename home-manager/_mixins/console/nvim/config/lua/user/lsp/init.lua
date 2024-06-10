@@ -4,7 +4,7 @@ if not status_ok then
 	return
 end
 
-require("nvim-lsp-installer").setup {}
+--require("nvim-lsp-installer").setup {}
 require("user.lsp.handlers").setup()
 --require("user.lsp.lsp-installer")
 local lspconfig = require('lspconfig')
