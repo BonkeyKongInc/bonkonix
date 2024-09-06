@@ -153,6 +153,14 @@ let   theme = ''
         ## bind | split-window <- this is an original line.
         bind | split-window -h \; select-layout even-horizontal
 
+        unbind c
+        unbind %
+        unbind '"'
+        bind  c  new-window      -c "$HOME"
+        bind  %  split-window -h -c "#{pane_current_path}"
+        bind '"' split-window -v -c "#{pane_current_path}"
+
+
         set -g history-limit 20000
         # set-option -g default-shell /bin/zsh
         set-option -g default-shell ''${SHELL}

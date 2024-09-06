@@ -75,6 +75,8 @@ keymap("x", "<A-k>", ":move '<-2<CR>gv-gv", opts)
 -- keymaps for qwerty
 keymap("", "<leader>fd", "<cmd>FZF <cr>", opts)
 local live_grep_args = require("telescope").extensions.live_grep_args 
+local live_grep_args_shortcuts = require("telescope-live-grep-args.shortcuts")
+--keymap.set("n", "<leader>fs", live_grep_args_shortcuts.grep_word_under_cursor)
 keymap("n", "<leader>fa", "<cmd>lua require('telescope').extensions.live_grep_args.live_grep_args()<cr>", opts)
 keymap("n", "<leader>fs", "<cmd>lua require('telescope').extensions.live_grep_args.shortcuts.grep_word_under_cursor()<cr>", opts)
 --keymap("n", "<leader>fs", live_grep_args.shortcuts.grep_word_under_cursor())

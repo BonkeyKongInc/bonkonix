@@ -93,9 +93,11 @@ in
 
       alias tm='tmux'
       alias buildpx4="./Tools/docker_run.sh 'make px4_fmu-v5_multicopter'"
+      alias buildpx4_x1="./Tools/docker_run.sh 'make cubepilot_cubeorange_default'"
       alias buildpx4io="./Tools/docker_run.sh 'make px4io_update'"
       alias buildpx4all="./Tools/docker_run.sh 'make px4io_update' && ./Tools/docker_run.sh 'make px4_fmu-v5_multicopter'"
       alias loadpx4="./Tools/px_uploader.py build/px4_fmu-v5_multicopter/px4_fmu-v5_multicopter.px4 --port /dev/ttyACM0"
+      alias loadpx4_x1="./Tools/px_uploader.py build/cubepilot_cubeorange_default/cubepilot_cubeorange_default.px4 --port /dev/ttyACM0"
       alias pvenv="./.venv/bin/python"
       alias autlog="cd ~/dev/AirolitUlogTool/ && .venv/bin/python main.py"
       alias nv.="nvim ."

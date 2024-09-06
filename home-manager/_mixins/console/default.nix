@@ -46,6 +46,18 @@
       libxml2
       cmake
       libclang
+      gparted
+      parted
+      rpiboot
+      pinta
+      microsoft-edge
+      htop
+      scrcpy
+      libreoffice
+      gcc-arm-embedded-9
+      nmap
+      iperf
+      #astyle
     ];
 
 
