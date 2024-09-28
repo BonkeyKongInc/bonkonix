@@ -6,8 +6,8 @@
     ../_mixins/services/syncthing.nix
     ../_mixins/services/flatpak.nix
     ../_mixins/services/pipewire.nix
-    ../_mixins/services/fix_interrupt.nix
     ../_mixins/virt
+     ../_mixins/services/fix_interrupt.nix
     ../_mixins/streaming
     ../_mixins/firefox
   ];
@@ -17,7 +17,7 @@
   boot.loader.grub.enable = true;
   boot.loader.grub.device = "/dev/sda";
 
-  boot.initrd.availableKernelModules = [ "xhci_pci" "thunderbolt" "vmd" "nvme" "usb_storage" "sd_mod" "rtsx_pci_sdmmc" ];
+  boot.initrd.availableKernelModules = [ "xhci_pci" "ehci_pci" "ahci" "usb_storage" "sd_mod" "rtsx_pci_sdmmc" ];
   boot.initrd.kernelModules = [ ];
   boot.kernelModules = [ "kvm-intel" "usbmon" ];
   boot.extraModulePackages = [ ];
@@ -31,31 +31,14 @@
   '';
 
   fileSystems."/" =
-    {
-      device = "/dev/disk/by-uuid/abf23e4a-efbc-4d57-a5bd-4a3949210373";
-      fsType = "btrfs";
-      options = [ "subvol=@nix_root" "noatime" "compress=lzo" "ssd" "space_cache=v2" ];
+    { device = "/dev/disk/by-uuid/ede3ff8b-676f-48d7-a87a-adf610d7bf72";
+      fsType = "ext4";
     };
 
-  fileSystems."/boot" =
-    {
-      device = "/dev/disk/by-uuid/1E53-972F";
-      fsType = "vfat";
-    };
+  swapDevices =
+    [ { device = "/dev/disk/by-uuid/ed7ae231-863c-44e6-922b-08854c9276d0"; }
+    ];
 
-  fileSystems."/home" =
-    {
-      device = "/dev/disk/by-uuid/abf23e4a-efbc-4d57-a5bd-4a3949210373";
-      fsType = "btrfs";
-      options = [ "subvol=@nix_home" "noatime" "compress=lzo" "ssd" "space_cache=v2" ];
-    };
-
-  fileSystems."/nix" =
-    {
-      device = "/dev/disk/by-uuid/abf23e4a-efbc-4d57-a5bd-4a3949210373";
-      fsType = "btrfs";
-      options = [ "subvol=@nix_nix" "noatime" "compress=lzo" "ssd" "space_cache=v2" ];
-    };
 
   #swapDevices = [ { device = "/swap/swapfile"; } ];
 
@@ -79,7 +62,7 @@
     gomuks
     obs-studio
     remmina
-    #kicad
+    kicad
     prusa-slicer
     wireshark
     reaper
