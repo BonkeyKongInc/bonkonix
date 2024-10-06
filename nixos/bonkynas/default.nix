@@ -23,6 +23,11 @@
   # See https://github.com/Mic92/envfs (for scripts to get access to /bin/bash etc.)
   services.envfs.enable = true;
 
+  # zfs
+  boot.supportedFilesystems = [ "zfs" ];
+  boot.zfs.forceImportRoot = false;
+  networking.hostId = "c0c6d51e";
+  #boot.zfs.extraPools = [ "zfsdata" "nvme_zfsdata" ];
   # Hdd sleep udev rule:
   services.udev.extraRules = ''
     SUBSYSTEM=="usbmon", GROUP="wireshark", MODE="0640"
