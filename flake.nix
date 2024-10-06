@@ -98,7 +98,7 @@
             platform = "x86_64-linux";
             username = "patrik";
           };
-        }
+        };
       };
 
       # The NixOS configurations

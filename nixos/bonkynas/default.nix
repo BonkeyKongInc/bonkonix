@@ -11,7 +11,6 @@
     ../_mixins/firefox
   ];
 
-  hardware.bluetooth.enable = true;
 
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
@@ -28,16 +27,20 @@
   services.udev.extraRules = ''
     SUBSYSTEM=="usbmon", GROUP="wireshark", MODE="0640"
   '';
-
   fileSystems."/" =
-    { device = "/dev/disk/by-uuid/ede3ff8b-676f-48d7-a87a-adf610d7bf72";
+    { device = "/dev/disk/by-uuid/707ab396-8ce5-48ca-b155-1bc80be3bf1c";
       fsType = "ext4";
     };
 
-  swapDevices =
-    [ { device = "/dev/disk/by-uuid/ed7ae231-863c-44e6-922b-08854c9276d0"; }
-    ];
+  fileSystems."/boot" =
+    { device = "/dev/disk/by-uuid/DD59-EFF8";
+      fsType = "vfat";
+      options = [ "fmask=0077" "dmask=0077" ];
+    };
 
+  swapDevices =
+    [ { device = "/dev/disk/by-uuid/aafeb3e7-fd78-4dba-a91c-7f15b2850142"; }
+    ];
 
   #swapDevices = [ { device = "/swap/swapfile"; } ];
 
