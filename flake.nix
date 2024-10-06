@@ -86,6 +86,19 @@
             username = "patrik";
           };
         };
+        "patrik@bonkynas" = lib.homeManagerConfiguration {
+          modules = [
+            ./home-manager
+          ];
+          pkgs = pkgsFor.x86_64-linux;
+          extraSpecialArgs = {
+            inherit inputs outputs stateVersion darkmode;
+            desktop = "plasma";
+            hostname = "bonkynas";
+            platform = "x86_64-linux";
+            username = "patrik";
+          };
+        }
       };
 
       # The NixOS configurations
@@ -121,6 +134,20 @@
             specialArgs = {
               inherit inputs outputs stateVersion;
               hostname = "bonkyhome";
+              username = "patrik";
+              desktop = "plasma";
+            };
+          };
+          bonkynas = lib.nixosSystem {
+            modules = [
+              ./nixos
+              agenix.nixosModules.age
+              #nixos-hardware.nixosModules.dell-xps-15-9520-nvidia
+              talon-nix.nixosModules.talon
+            ];
+            specialArgs = {
+              inherit inputs outputs stateVersion;
+              hostname = "bonkynas";
               username = "patrik";
               desktop = "plasma";
             };
