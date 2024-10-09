@@ -27,11 +27,13 @@
   boot.supportedFilesystems = [ "zfs" ];
   boot.zfs.forceImportRoot = false;
   networking.hostId = "c0c6d51e";
-  #boot.zfs.extraPools = [ "zfsdata" "nvme_zfsdata" ];
+  boot.zfs.extraPools = [ "bulk" ];
+
   # Hdd sleep udev rule:
   services.udev.extraRules = ''
-    SUBSYSTEM=="usbmon", GROUP="wireshark", MODE="0640"
+    ACTION=="add|change", KERNEL=="sd[b-z]", ATTRS{queue/rotational}=="1", RUN+="${pkgs.hdparm}/bin/hdparm -S 120 /dev/%k"
   '';
+
   fileSystems."/" =
     { device = "/dev/disk/by-uuid/707ab396-8ce5-48ca-b155-1bc80be3bf1c";
       fsType = "ext4";
