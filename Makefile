@@ -26,3 +26,5 @@ home_build:
 	sudo reboot
 os:
 	sudo nixos-rebuild switch --flake ~/bonk/bonkonix/#${HOSTNAME}
+boot:
+	sudo nixos-rebuild boot --flake ~/bonk/bonkonix/#${HOSTNAME}

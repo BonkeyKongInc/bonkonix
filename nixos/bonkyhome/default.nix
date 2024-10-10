@@ -21,6 +21,7 @@
   boot.initrd.kernelModules = [ ];
   boot.kernelModules = [ "kvm-intel" "usbmon" ];
   boot.extraModulePackages = [ ];
+  boot.supportedFilesystems = [ "ntfs" ];
 
   # See https://github.com/Mic92/envfs (for scripts to get access to /bin/bash etc.)
   services.envfs.enable = true;
