@@ -66,6 +66,7 @@
   programs.nix-ld.enable = true;
   programs.talon.enable = true;
   programs.adb.enable = true;
+  programs.ssh.forwardX11 = true;
 
   environment.systemPackages = with pkgs; [
     gomuks
