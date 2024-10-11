@@ -1,4 +1,4 @@
-# Sony Vaio SVS1313C5E 
+# Intel N100 
 { config, lib, pkgs, ... }:
 {
   imports = [
@@ -7,39 +7,47 @@
     ../_mixins/services/flatpak.nix
     ../_mixins/services/pipewire.nix
     ../_mixins/virt
-     ../_mixins/services/fix_interrupt.nix
     ../_mixins/streaming
     ../_mixins/firefox
   ];
 
-  hardware.bluetooth.enable = true;
 
-  boot.loader.grub.enable = true;
-  boot.loader.grub.device = "/dev/sda";
+  boot.loader.systemd-boot.enable = true;
+  boot.loader.efi.canTouchEfiVariables = true;
 
   boot.initrd.availableKernelModules = [ "xhci_pci" "ehci_pci" "ahci" "usb_storage" "sd_mod" "rtsx_pci_sdmmc" ];
   boot.initrd.kernelModules = [ ];
   boot.kernelModules = [ "kvm-intel" "usbmon" ];
   boot.extraModulePackages = [ ];
-  boot.supportedFilesystems = [ "ntfs" ];
 
   # See https://github.com/Mic92/envfs (for scripts to get access to /bin/bash etc.)
   services.envfs.enable = true;
 
+  # zfs
+  boot.supportedFilesystems = [ "zfs" ];
+  boot.zfs.forceImportRoot = false;
+  networking.hostId = "c0c6d51e";
+  boot.zfs.extraPools = [ "bulk" ];
+
   # Hdd sleep udev rule:
   services.udev.extraRules = ''
-    SUBSYSTEM=="usbmon", GROUP="wireshark", MODE="0640"
+    ACTION=="add|change", KERNEL=="sd[b-z]", ATTRS{queue/rotational}=="1", RUN+="${pkgs.hdparm}/bin/hdparm -S 120 /dev/%k"
   '';
 
   fileSystems."/" =
-    { device = "/dev/disk/by-uuid/ede3ff8b-676f-48d7-a87a-adf610d7bf72";
+    { device = "/dev/disk/by-uuid/707ab396-8ce5-48ca-b155-1bc80be3bf1c";
       fsType = "ext4";
     };
 
-  swapDevices =
-    [ { device = "/dev/disk/by-uuid/ed7ae231-863c-44e6-922b-08854c9276d0"; }
-    ];
+  fileSystems."/boot" =
+    { device = "/dev/disk/by-uuid/DD59-EFF8";
+      fsType = "vfat";
+      options = [ "fmask=0077" "dmask=0077" ];
+    };
 
+  swapDevices =
+    [ { device = "/dev/disk/by-uuid/aafeb3e7-fd78-4dba-a91c-7f15b2850142"; }
+    ];
 
   #swapDevices = [ { device = "/swap/swapfile"; } ];
 
@@ -63,10 +71,7 @@
     gomuks
     obs-studio
     remmina
-    kicad
-    prusa-slicer
     wireshark
-    reaper
     (pkgs.python3.withPackages (ps: with ps; [ pyserial python-lsp-server ]))
   ];
 }

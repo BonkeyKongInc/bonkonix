@@ -1,23 +1,15 @@
-# Ripxonix
-Ripxorip's NixOS &amp; Home Manager Configurations
+# Bonkonix
+bonkey's NixOS &amp; Home Manager Configurations
 
 ## Usage ⚒️
 ``````make
-
-#################################################################################
 #
-#               88                                               88
-#               ""                                               ""
-#
-#    8b,dPPYba, 88 8b,dPPYba, 8b,     ,d8 ,adPPYba,  8b,dPPYba,  88 8b,     ,d8
-#    88P'   "Y8 88 88P'    "8a `Y8, ,8P' a8"     "8a 88P'   `"8a 88  `Y8, ,8P'
-#    88         88 88       d8   )888(   8b       d8 88       88 88    )888(
-#    88         88 88b,   ,a8" ,d8" "8b, "8a,   ,a8" 88       88 88  ,d8" "8b,
-#    88         88 88`YbbdP"' 8P'     `Y8 `"YbbdP"'  88       88 88 8P'     `Y8
-#                  88
-#                  88
-#
-#################################################################################
+#   ______                _                   _ __   __ 
+#   | ___ \              | |                 (_)\ \ / / 
+#   | |_/ /  ___   _ __  | | __  ___   _ __   _  \ V /  
+#   | ___ \ / _ \ | '_ \ | |/ / / _ \ | '_ \ | | /   \  
+#   | |_/ /| (_) || | | ||   < | (_) || | | || |/ /^\ \ 
+#   \____/  \___/ |_| |_||_|\_\ \___/ |_| |_||_|\/   \/ 
 
 # Rebuild the OS
 make os
@@ -32,6 +24,9 @@ make home
 ## TODOs
 - [ ] The key bootstrapper shall also copy over SSH keys for git to enable the point below
 - [ ] Use a separate flake (private git repo) to store my secrets (see ryan4yin)
+
+## Made possible by
+- https://github.com/ripxorip/ripxonix
 
 ## Inspirations 🖋️
 - Wimpy https://github.com/wimpysworld/nix-config
