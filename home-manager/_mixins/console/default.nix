@@ -58,6 +58,8 @@
       nmap
       iperf
       #astyle
+      meson
+      pkg-config
     ];
 
 

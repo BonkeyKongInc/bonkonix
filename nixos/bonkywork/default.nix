@@ -1,5 +1,5 @@
 # Dell XPS 9520
-{ config, lib, pkgs, ... }:
+{ config, lib, pkgs, username, ... }:
 {
   imports = [
     ../_mixins/services/tailscale.nix
@@ -22,6 +22,7 @@
 
   # See https://github.com/Mic92/envfs (for scripts to get access to /bin/bash etc.)
   services.envfs.enable = true;
+  services.printing.enable = true;
 
   # Hdd sleep udev rule:
   services.udev.extraRules = ''
@@ -80,7 +81,12 @@
     kicad
     prusa-slicer
     wireshark
-    reaper
+    gimp
+    qucs-s
     (pkgs.python3.withPackages (ps: with ps; [ pyserial python-lsp-server ]))
   ];
+#  security.wireshark = {
+#    enable = true;
+#    allowedUsers = [ "${username}"];
+#  };
 }
