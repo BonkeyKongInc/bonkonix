@@ -109,6 +109,9 @@ in
       alias bp='btop'
       alias lasttag='git describe --tags --abbrev=0'
       alias mavsh='~/dev/px4_logger_tester/.venv/bin/python ~/dev/px4_logger_tester/mavlink_shell.py'
+      # NIX aliases
+      alias ns='nix-shell --command "zsh"'
+      alias nd='nix develop'
 
       bindkey -v
       # bindkey ii vi-cmd-mode
