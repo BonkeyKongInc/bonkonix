@@ -31,7 +31,7 @@
       wireguard-tools
       jq
       dig
-      matrix-sh
+      #matrix-sh
       wl-clipboard
 #      gitFull
      # gitg
