@@ -68,18 +68,6 @@ in
       alias gsm="submodutil.py 5 | v -c 'set buftype=nofile'"
       alias gsd="git diff --submodule=diff | v -c 'set ft=diff' -c 'set buftype=nofile'"
 
-      alias sco="~/home/super_checkout.py"
-      alias sst="~/home/super_status.py"
-      alias scm="~/home/super_commit_msg.py"
-      alias srv="~/home/super_git_review.py"
-      alias sbr="~/home/super_branch.py"
-      alias sso="~/home/super_git_show.py"
-      alias sca="~/home/super_commit_all.py"
-
-      alias vc="v -c 'set buftype=nofile' -c '+normal G'"
-      alias vd="v -d"
-      alias git='LANG=en_US.UTF-8 git'
-      alias t='tmux'
       alias gcap="git add -A && git commit -m \"Inc\" && git push"
       alias rv='sudo -E nvim'
       alias ddo="find -name \*.orig -delete"
@@ -101,7 +89,7 @@ in
       alias pvenv="./.venv/bin/python"
       alias autlog="cd ~/dev/AirolitUlogTool/ && .venv/bin/python main.py"
       alias nv.="nvim ."
-      alias gk="gitk --all"
+      alias gka="gitk --all &"
       alias gito="git log --oneline --graph --color --all --decorate --pretty"
       alias gltags="git tag --merged HEAD --sort=-taggerdate"
       alias gitol="git log --oneline --graph --color --ancestry-path=HEAD --decorate --pretty"
@@ -112,6 +100,8 @@ in
       # NIX aliases
       alias ns='nix-shell --command "zsh"'
       alias nd='nix develop'
+      alias pidgains='python ~/dev/tool_pid_summarizer/main.py'
+      alias pj='~/apps/PlotJuggler/build/bin/plotjuggler'
 
       bindkey -v
       # bindkey ii vi-cmd-mode
@@ -250,7 +240,12 @@ in
 
       function ulg2pile() 
       {
-        nix develop ~/dev/ulog2param/flake.nix -c bash -c "ulog_params "$1" > params_temp && python ~/dev/ulog2param/patch_params.py params_temp > $(echo "$1" | sed 's/ulg/params/') │  && rm params_temp"
+        nix develop ~/dev/ulog2param -c bash -c "ulog_params "$1" > params_temp && python ~/dev/ulog2param/patch_params.py params_temp > $(echo "$1" | sed 's/ulg/params/') │  && rm params_temp"
+      }
+
+      function gkr()
+      {
+        gitk --remotes="$1" &
       }
 
       ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=4'

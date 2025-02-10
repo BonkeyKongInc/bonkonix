@@ -1,5 +1,6 @@
 local configs = require("nvim-treesitter.configs")
 configs.setup {
+  parser_install_dir = "~/.bonktemp/",
   --ensure_installed = {"c", "cpp", "lua", "python", "dockerfile", "cmake", "bash"},
   sync_install = false, 
   ignore_install = { "" }, -- List of parsers to ignore installing
