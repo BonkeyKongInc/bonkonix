@@ -72,6 +72,7 @@
     obs-studio
     remmina
     wireshark
+    smartmontools
     (pkgs.python3.withPackages (ps: with ps; [ pyserial python-lsp-server ]))
   ];
 }

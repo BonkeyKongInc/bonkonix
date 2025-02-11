@@ -22,6 +22,7 @@ in
       "wheel"
       "dialout"
       "plugdev"
+      "www-data"
     ] # Enable ‘sudo’ for the user.
     ++ ifExists [
       "docker"
