@@ -60,6 +60,7 @@
       #astyle
       meson
       pkg-config
+      mdr
     ];
 
 

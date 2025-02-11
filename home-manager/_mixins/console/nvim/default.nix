@@ -51,6 +51,10 @@
         fzf-vim
         nvim-web-devicons
         moonfly
+        markdown-preview-nvim
+        asyncrun-vim
+        vim-markdown-composer
+        render-markdown-nvim
 
         #----- ripxorip plugins -----
         #bolt
