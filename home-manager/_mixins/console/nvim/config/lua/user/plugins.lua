@@ -12,7 +12,6 @@ return require('packer').startup(function()
     requires = {
       'nvim-tree/nvim-web-devicons', -- optional
     },
-      --require'nvim-tree'.setup {}
   }
   use 'nvim-lualine/lualine.nvim'
   use 'tpope/vim-fugitive'
@@ -60,9 +59,10 @@ return require('packer').startup(function()
   --use "williamboman/nvim-lsp-installer" -- simple to use language server installer
 
   use "rlane/pounce.nvim"
+  use "ripxorip/aerojump.nvim"
   -- Telescope
   use "nvim-telescope/telescope.nvim"
-  --use 'nvim-telescope/telescope-media-files.nvim'
+	use { "axkirillov/telescope-changed-files" }
   -- Startup screen
   use {
     "startup-nvim/startup.nvim",
@@ -93,12 +93,9 @@ return require('packer').startup(function()
 
   -- git
   use { 'lewis6991/gitsigns.nvim',
-    --require('gitsigns').setup()
     config = function()
       require('gitsigns').setup()
     end
   }
-  --use { "axkirillov/telescope-changed-files" }
-  --require('telescope').load_extension('changed_files')
 
 end)

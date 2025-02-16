@@ -42,8 +42,8 @@ telescope.setup {
 
         ["<Tab>"] = actions.toggle_selection + actions.move_selection_worse,
         ["<S-Tab>"] = actions.toggle_selection + actions.move_selection_better,
-        ["<C-q>"] = actions.send_to_qflist + actions.open_qflist,
-        ["<M-q>"] = actions.send_selected_to_qflist + actions.open_qflist,
+        ["<M-q>"] = actions.send_to_qflist + actions.open_qflist,
+        ["<C-q>"] = actions.send_selected_to_qflist + actions.open_qflist,
         ["<C-l>"] = actions.complete_tag,
         ["<C-_>"] = actions.which_key, -- keys from pressing <C-/>
       },
@@ -121,5 +121,7 @@ telescope.setup {
 }
 telescope.configs = {}
 telescope.configs["telescope-file-browser.nvim"] = function()
+telescope.load_extension("live_grep_args")
+require('telescope').load_extension('changed_files')
 require("telescope").load_extension "file_browser"
 end

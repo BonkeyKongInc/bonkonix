@@ -71,17 +71,20 @@ keymap("x", "<A-k>", ":move '<-2<CR>gv-gv", opts)
 -- keymap("t", "<C-k>", "<C-\\><C-N><C-w>k", term_opts)
 -- keymap("t", "<C-h>", "<C-\\><C-N><C-w>h", term_opts)
 
---keymap("", "<leader>fd", "<cmd>Telescope find_files<cr>", opts)
 -- keymaps for qwerty
 keymap("", "<leader>fd", "<cmd>FZF <cr>", opts)
 local live_grep_args = require("telescope").extensions.live_grep_args 
 local live_grep_args_shortcuts = require("telescope-live-grep-args.shortcuts")
 --keymap.set("n", "<leader>fs", live_grep_args_shortcuts.grep_word_under_cursor)
 keymap("n", "<leader>fa", "<cmd>lua require('telescope').extensions.live_grep_args.live_grep_args()<cr>", opts)
-keymap("n", "<leader>fs", "<cmd>lua require('telescope').extensions.live_grep_args.shortcuts.grep_word_under_cursor()<cr>", opts)
+keymap("n", "<leader>fad", "<cmd>Telescope live_grep search_dirs=%:p:h<cr>", opts)
+--keymap("n", "<leader>fs", "<cmd>lua require('telescope').extensions.live_grep_args.shortcuts.grep_word_under_cursor()<cr>", opts)
+keymap("n", "<leader>fs", "<cmd>lua require('telescope-live-grep-args.shortcuts').grep_word_under_cursor()<cr>", opts)
+ 
 --keymap("n", "<leader>fs", live_grep_args.shortcuts.grep_word_under_cursor())
 --keymap("n", "<leader>fs", "<cmd>Telescope grep_string<cr>", opts)
-keymap("n", "<leader>sh", "<cmd>Telescope search_history<cr>", opts)
+keymap("n", "<leader>jq", "<cmd>Telescope quickfix<cr>", opts)
+keymap("n", "<leader>sj", "<cmd>Telescope search_history<cr>", opts)
 keymap("n", "<leader>sr", "<cmd>Telescope current_buffer_fuzzy_find<cr>", opts)
 keymap("n", "<leader>fe", "<cmd>Telescope changed_files<cr>", opts)
 keymap("n", "<leader>b", "<cmd>Telescope changed_files choose_base_branch<cr>", opts)

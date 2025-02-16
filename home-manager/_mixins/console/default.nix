@@ -43,6 +43,7 @@
       python311Packages.numpy
       python311Packages.libxml2
       python311Packages.libxslt
+      python311Packages.pynvim
       libxslt
       libxml2
       cmake
@@ -62,7 +63,6 @@
       meson
       pkg-config
       mdr
-      warp-terminal
     ];
 
 
