@@ -32,7 +32,8 @@
       jq
       dig
       #matrix-sh
-      wl-clipboard
+      #wl-clipboard
+      xclip
 #      gitFull
      # gitg
       gcc
@@ -61,6 +62,7 @@
       meson
       pkg-config
       mdr
+      warp-terminal
     ];
 
 
@@ -77,9 +79,7 @@
 
   programs.bat = {
     enable = true;
-    config = lib.mkIf (!darkmode) {
-      theme = "GitHub";
-    };
+    config.theme = "1337";
   };
 
   # Nicely reload system units when changing configs

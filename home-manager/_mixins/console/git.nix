@@ -9,6 +9,7 @@
           navigate = true;
           side-by-side = true;
           light = !darkmode;
+          syntax-theme = "1337";
         };
       };
       aliases = {

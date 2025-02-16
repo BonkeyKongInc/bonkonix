@@ -52,7 +52,6 @@ in
       alias ..="cd .."
       alias v="nvim"
       alias v.="nvim ."
-      alias k="/home/ripxorip/dev/kde/build/kde/applications/kate/bin/kate"
       alias l="exa -la --git --icons"
       alias cat='bat'
       alias less='bat'
@@ -105,7 +104,6 @@ in
       alias gito="git log --oneline --graph --color --all --decorate --pretty"
       alias gltags="git tag --merged HEAD --sort=-taggerdate"
       alias gitol="git log --oneline --graph --color --ancestry-path=HEAD --decorate --pretty"
-      alias gts='git status'
       alias bp='btop'
       alias lasttag='git describe --tags --abbrev=0'
       alias mavsh='~/dev/px4_logger_tester/.venv/bin/python ~/dev/px4_logger_tester/mavlink_shell.py'
@@ -166,18 +164,6 @@ in
         source "$(fzf-share)/completion.zsh"
       fi
 
-      gccam() {
-          if [ -z "$1" ]; then
-              echo "Please provide a commit message."
-          else
-              git add -A && git commit -m "$1" && git push
-          fi
-      }
-
-      gcam_bind() {
-          BUFFER="gccam \"\""
-          CURSOR=7
-      }
 
       zle -N gcam_bind
       zle -N fdd

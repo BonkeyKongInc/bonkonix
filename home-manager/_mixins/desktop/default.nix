@@ -6,7 +6,8 @@ let
   kitty_light_theme_font_size = 11;
   kitty_light_theme_window_decorations = "no";
 
-  kitty_dark_theme = "Catppuccin-Macchiato";
+  #1984
+  kitty_dark_theme = "Doom_One";
   kitty_dark_theme_font = "Iosevka NF";
   kitty_dark_theme_font_size = 13;
   kitty_dark_theme_window_decorations = "yes";
@@ -53,5 +54,6 @@ in
         "ctrl+f11" = "toggle_fullscreen";
       };
     };
+
   };
 }
