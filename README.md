@@ -22,6 +22,11 @@ make home
 `nix build .#nixosConfigurations.iso-desktop.config.system.build.isoImage`
 
 ## TODOs
+- [ ] Add specific hw config for SVS1313C5E, speed-stamina button
+    * Proper throttling of CPU
+    * use propriatary nvidia driver
+    * improve disabling of gpe13 interrupt
+- [ ] Add nix handling of plasma, based on host [nix managed plasma](https://github.com/nix-community/plasma-manager)
 - [ ] The key bootstrapper shall also copy over SSH keys for git to enable the point below
 - [ ] Use a separate flake (private git repo) to store my secrets (see ryan4yin)
 

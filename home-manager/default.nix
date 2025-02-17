@@ -52,6 +52,8 @@ in
       allowUnfree = true;
       # Workaround for https://github.com/nix-community/home-manager/issues/2942
       allowUnfreePredicate = _: true;
+      useGlobalPkgs = true;
+      useUserPackages = true;
     };
     #plasma-manager = {
     #  url = "github:pjones/plasma-manager";
@@ -65,6 +67,7 @@ in
     settings = {
       experimental-features = [ "nix-command" "flakes" ];
       warn-dirty = false;
+      download-buffer-size = 10000000;
     };
   };
 }

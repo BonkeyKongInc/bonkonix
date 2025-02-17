@@ -51,7 +51,11 @@
         fzf-vim
         nvim-web-devicons
         moonfly
-      #render-markdown-nvim
+
+        markdown-preview-nvim
+        asyncrun-vim
+        vim-markdown-composer
+        render-markdown-nvim
         vim-dirdiff
         markview-nvim
 
