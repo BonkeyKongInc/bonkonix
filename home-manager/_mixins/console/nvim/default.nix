@@ -18,6 +18,24 @@
       hash = "sha256-fNBpmc/y8Okv+y/ho1bL6PIiHdG47HfuvdVnuU1WtlU=";
     };
   };
+  aerojump = pkgs.vimUtils.buildVimPlugin {
+    name = "aerojump";
+    src = pkgs.fetchFromGitHub {
+      owner = "ripxorip";
+      repo = "aerojump.nvim";
+      rev = "d0cda41";
+      hash = "sha256-VAW3lPurGAW7hcAFC6Z1sHGU1LU6kafgyNmP8AnJ6QI=";
+    };
+  };
+  telescope-changedfiles = pkgs.vimUtils.buildVimPlugin {
+    name = "telescope-changed-files";
+    src = pkgs.fetchFromGitHub {
+      owner = "axkirillov";
+      repo = "telescope-changed-files";
+      rev = "0ccf50680abba21127c46c477f4646f2c5589767";
+      hash = "sha256-M5Eq1EDQQY+307VX1+yOX0fSyeOCJmnBh5fvz6Yis3s=";
+    };
+  };
   in 
   {
     programs.neovim = {
@@ -45,12 +63,18 @@
         pounce
         telescope-nvim
         telescope-live-grep-args-nvim
+        telescope-changedfiles 
         neoscroll-nvim
         gitsigns-nvim
         nvim-treesitter.withAllGrammars
         fzf-vim
         nvim-web-devicons
         moonfly
+        markdown-preview-nvim
+        asyncrun-vim
+        vim-markdown-composer
+        render-markdown-nvim
+        aerojump
 
         markdown-preview-nvim
         asyncrun-vim
