@@ -76,6 +76,13 @@
         render-markdown-nvim
         aerojump
 
+        markdown-preview-nvim
+        asyncrun-vim
+        vim-markdown-composer
+        render-markdown-nvim
+        vim-dirdiff
+        markview-nvim
+
         #----- ripxorip plugins -----
         #bolt
         #nvim-lspconfig

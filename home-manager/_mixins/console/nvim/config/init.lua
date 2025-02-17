@@ -1,8 +1,10 @@
+vim.opt.runtimepath:prepend("~/.bonktemp/")
 require "user.options"
 require "user.plugins"
 require "user.colorscheme"
 require "user.cmp"
 require "user.lsp"
+require "user.lang"
 require "user.telescope"
 require "user.neoscroll"
 require "user.nvim-tree"
