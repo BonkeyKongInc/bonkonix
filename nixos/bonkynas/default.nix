@@ -75,4 +75,7 @@
     smartmontools
     (pkgs.python3.withPackages (ps: with ps; [ pyserial python-lsp-server ]))
   ];
+  nixpkgs.config.permittedInsecurePackages = [
+    "olm-3.2.16"
+  ];
 }
