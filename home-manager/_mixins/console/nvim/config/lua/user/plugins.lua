@@ -97,5 +97,13 @@ return require('packer').startup(function()
       require('gitsigns').setup()
     end
   }
+  use { 'Skardyy/neo-img',
+    build = function()
+      require('neo-img').install()
+    end,
+    config = function()
+      require('neo-img').setup()
+    end
+  }
 
 end)

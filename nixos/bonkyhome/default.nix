@@ -68,9 +68,20 @@
     wireshark
     reaper
     alacritty
+    cpufrequtils
     (pkgs.python3.withPackages (ps: with ps; [ pyserial python-lsp-server ]))
   ];
   nixpkgs.config.permittedInsecurePackages = [
     "olm-3.2.16"
   ];
+  systemd.services.increaseCpu = {
+    description = "Enables usage of max cpu freq";
+    wantedBy = [ "multi-user.target" ];
+    after = [ "multi-user.target" ];
+    serviceConfig = {
+      ExecStart = "cpufreq-set -f `cat /sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq`";
+      Type = "simple";
+      Restart = "always";
+    };
+};
 }

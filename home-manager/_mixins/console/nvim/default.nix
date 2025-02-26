@@ -36,6 +36,16 @@
       hash = "sha256-M5Eq1EDQQY+307VX1+yOX0fSyeOCJmnBh5fvz6Yis3s=";
     };
   };
+  neo-img = pkgs.vimUtils.buildVimPlugin {
+    name = "neo-img";
+    src = pkgs.fetchFromGitHub {
+      owner = "Skardyy";
+      repo = "neo-img";
+      rev = "f67a54";
+      hash = "sha256-071BYXkOzimroOqesNOOhBJ54rvjDkP+EnGJ+QEAdJM=";
+    };
+  };
+
   in 
   {
     programs.neovim = {
@@ -82,6 +92,7 @@
         render-markdown-nvim
         vim-dirdiff
         markview-nvim
+        neo-img
 
         #----- ripxorip plugins -----
         #bolt

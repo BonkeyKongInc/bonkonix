@@ -46,7 +46,6 @@ in
       ];
     };
     initExtra = ''
-      export PATH=~/tools:~/dev/workspace/tools:/home/ripxorip/dev/ptools:/home/ripxorip/dev/tools:~/.local/bin:$PATH:~/.cargo/bin
       alias ws="cd ~/dev/"
       alias c="cd"
       alias ..="cd .."
@@ -55,52 +54,45 @@ in
       alias l="exa -la --git --icons"
       alias cat='bat'
       alias less='bat'
-      alias sshno='ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no'
-      alias s="sudo"
-      alias so="source"
-      alias gs="git status"
-      alias gc="git commit -m"
-      alias b="docker_builder.py"
-      # alias find='/usr/bin/fd'
+      alias sysc="sudo systemctl"
       alias ff="find . -name"
       alias r2c="r2 -e asm.cpu=cortex"
       alias rgi="rg --no-ignore --iglob !tags "
-      alias gsm="submodutil.py 5 | v -c 'set buftype=nofile'"
-      alias gsd="git diff --submodule=diff | v -c 'set ft=diff' -c 'set buftype=nofile'"
 
-      alias gcap="git add -A && git commit -m \"Inc\" && git push"
-      alias rv='sudo -E nvim'
-      alias ddo="find -name \*.orig -delete"
-      alias dbgs="rsync -razhmv --delete ./ ~/shared/debug --exclude='.git/' --exclude='node_modules/' --exclude='.venv/'"
       alias rr="rax2 -r"
-
-      alias wgu="sudo systemctl stop tailscaled.service && wg-quick up ~/wireguard/SE-Integrity.conf"
-      alias wgd="wg-quick down ~/wireguard/SE-Integrity.conf && sudo systemctl start tailscaled.service"
 
       alias markdown_preview="grip -b"
 
       alias tm='tmux'
+      # PX4 aliases
       alias buildpx4="./Tools/docker_run.sh 'make px4_fmu-v5_multicopter'"
       alias buildpx4_x1="./Tools/docker_run.sh 'make cubepilot_cubeorange_default'"
       alias buildpx4io="./Tools/docker_run.sh 'make px4io_update'"
       alias buildpx4all="./Tools/docker_run.sh 'make px4io_update' && ./Tools/docker_run.sh 'make px4_fmu-v5_multicopter'"
       alias loadpx4="./Tools/px_uploader.py build/px4_fmu-v5_multicopter/px4_fmu-v5_multicopter.px4 --port /dev/ttyACM0"
       alias loadpx4_x1="./Tools/px_uploader.py build/cubepilot_cubeorange_default/cubepilot_cubeorange_default.px4 --port /dev/ttyACM0"
-      alias pvenv="./.venv/bin/python"
+      alias pidgains='python ~/dev/tool_pid_summarizer/main.py'
+      alias pj='~/apps/PlotJuggler/build/bin/plotjuggler'
       alias autlog="cd ~/dev/AirolitUlogTool/ && .venv/bin/python main.py"
+      alias mavsh='~/dev/px4_logger_tester/.venv/bin/python ~/dev/px4_logger_tester/mavlink_shell.py'
+
+      alias pvenv="./.venv/bin/python"
       alias nv.="nvim ."
+      alias bp='btop'
+
+      # NIX aliases
+      alias ns='nix-shell --command "zsh"'
+      alias nd='nix develop'
+
+      # GIT aliases
       alias gka="gitk --all &"
       alias gito="git log --oneline --graph --color --all --decorate --pretty"
       alias gltags="git tag --merged HEAD --sort=-taggerdate"
       alias gitol="git log --oneline --graph --color --ancestry-path=HEAD --decorate --pretty"
-      alias bp='btop'
       alias lasttag='git describe --tags --abbrev=0'
-      alias mavsh='~/dev/px4_logger_tester/.venv/bin/python ~/dev/px4_logger_tester/mavlink_shell.py'
-      # NIX aliases
-      alias ns='nix-shell --command "zsh"'
-      alias nd='nix develop'
-      alias pidgains='python ~/dev/tool_pid_summarizer/main.py'
-      alias pj='~/apps/PlotJuggler/build/bin/plotjuggler'
+      alias gs="git status"
+      alias gc="git commit -m"
+      alias gsd="git diff --submodule=diff | v -c 'set ft=diff' -c 'set buftype=nofile'"
 
       bindkey -v
       # bindkey ii vi-cmd-mode

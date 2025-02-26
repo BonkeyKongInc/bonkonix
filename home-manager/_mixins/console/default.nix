@@ -63,6 +63,7 @@
       meson
       pkg-config
       mdr
+      superfile
     ];
 
 
