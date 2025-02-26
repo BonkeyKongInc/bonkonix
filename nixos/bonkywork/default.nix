@@ -83,11 +83,14 @@
     wireshark
     gimp
     qucs-s
+    teams
     (pkgs.python3.withPackages (ps: with ps; [ pyserial python-lsp-server ]))
   ];
    nixpkgs.config.permittedInsecurePackages = [
     "olm-3.2.16"
+    "electron-27.3.11"
     ];
+  nixpkgs.config.allowUnsupportedSystem = true;
 #  security.wireshark = {
 #    enable = true;
 #    allowedUsers = [ "${username}"];

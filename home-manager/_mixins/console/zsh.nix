@@ -55,6 +55,7 @@ in
       alias l="exa -la --git --icons"
       alias cat='bat'
       alias less='bat'
+      alias sshno='ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no'
       alias s="sudo"
       alias so="source"
       alias gs="git status"

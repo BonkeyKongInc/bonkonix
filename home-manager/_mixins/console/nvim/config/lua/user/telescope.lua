@@ -5,6 +5,7 @@ end
 
 --telescope.load_extension('media_files')
 
+local builtin = require("telescope.builtin")
 local actions = require "telescope.actions"
 local lga_actions = require("telescope-live-grep-args.actions")
 local utils = require("telescope.utils")
@@ -103,8 +104,9 @@ telescope.setup {
       -- define mappings, e.g.
       mappings = { -- extend mappings
         i = {
-          ["<C-u>"] = lga_actions.quote_prompt({ postfix =  " " .. utils.buffer_dir() }),
-          ["<C-i>"] = lga_actions.quote_prompt({ postfix = " --iglob  **/*/**" }),
+          ["<C-i>"] = lga_actions.quote_prompt({ postfix =  " " .. vim.fn.expand('%:p:h')}),
+          ["<C-f>"] = lga_actions.quote_prompt({ postfix =  " " .. "--type "}),
+          ["<C-d>"] = lga_actions.quote_prompt({ postfix = " --iglob  **/*/**" }),
         },
       },
       -- ... also accepts theme settings, for example:
@@ -119,6 +121,7 @@ telescope.setup {
     -- please take a look at the readme of the extension you want to configure
   },
 }
+--leader>ff"] = { function() builtin.find_files({ cwd = utils.buffer_dir() }) end, desc = "Find files in cwd" }
 telescope.configs = {}
 telescope.configs["telescope-file-browser.nvim"] = function()
 telescope.load_extension("live_grep_args")
