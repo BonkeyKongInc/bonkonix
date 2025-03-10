@@ -4,7 +4,7 @@
     ./zsh.nix
     ./git.nix
     ./nvim
-    ./nvim/ttyimg
+    #    ./nvim/ttyimg
     ./superfile.nix
   ];
   home = {
