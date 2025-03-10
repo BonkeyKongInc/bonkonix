@@ -31,7 +31,7 @@
 
   # Hdd sleep udev rule:
   services.udev.extraRules = ''
-    ACTION=="add|change", KERNEL=="sd[b-z]", ATTRS{queue/rotational}=="1", RUN+="${pkgs.hdparm}/bin/hdparm -S 120 /dev/%k"
+    ACTION=="add|change", KERNEL=="sd[b-z]", ATTRS{queue/rotational}=="1", RUN+="${pkgs.hdparm}/bin/hdparm -S 60 /dev/%k"
   '';
 
   fileSystems."/" =
