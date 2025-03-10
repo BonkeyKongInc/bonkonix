@@ -4,6 +4,8 @@
     ./zsh.nix
     ./git.nix
     ./nvim
+    ./nvim/ttyimg
+    ./superfile.nix
   ];
   home = {
     file = {
@@ -63,7 +65,6 @@
       meson
       pkg-config
       mdr
-      superfile
     ];
 
 
