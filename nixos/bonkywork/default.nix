@@ -19,7 +19,9 @@
   boot.initrd.kernelModules = [ ];
   boot.kernelModules = [ "kvm-intel" "usbmon" ];
   boot.extraModulePackages = [ ];
-
+  boot.kernel.sysctl = {
+    "kernel.dmesg_restrict" = 0;
+  };
   # See https://github.com/Mic92/envfs (for scripts to get access to /bin/bash etc.)
   services.envfs.enable = true;
   services.printing.enable = true;

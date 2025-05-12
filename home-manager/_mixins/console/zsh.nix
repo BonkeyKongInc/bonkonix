@@ -58,6 +58,7 @@ in
       alias ff="find . -name"
       alias r2c="r2 -e asm.cpu=cortex"
       alias rgi="rg --no-ignore --iglob !tags "
+      alias sshno='ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no'
 
       alias rr="rax2 -r"
 
@@ -93,6 +94,7 @@ in
       alias gs="git status"
       alias gc="git commit -m"
       alias gsd="git diff --submodule=diff | v -c 'set ft=diff' -c 'set buftype=nofile'"
+      alias gre="git restore"
 
       bindkey -v
       # bindkey ii vi-cmd-mode
@@ -146,6 +148,9 @@ in
         source "$(fzf-share)/key-bindings.zsh"
         source "$(fzf-share)/completion.zsh"
       fi
+      jlc2sym() {
+        ~/dev/hw/easyeda2kicad.py/jlc2sym.sh $1
+      }
 
 
       zle -N gcam_bind

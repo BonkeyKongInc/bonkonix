@@ -31,6 +31,9 @@
       hdparm
       nfs-utils
       socat
+      teams-for-linux
+      virt-manager
+      spice-gtk
     ];
     variables = {
       EDITOR = "vim";
@@ -107,6 +110,7 @@
   };
 
   security.sudo.wheelNeedsPassword = false;
+  #   security.wrappers.spice-client-glib-usb-acl-helper.source = "${pkgs.spice-gtk}/bin/spice-client-glib-usb-acl-helper";
   networking.firewall.enable = false;
 
   system.stateVersion = stateVersion;

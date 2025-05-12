@@ -93,6 +93,7 @@
         vim-dirdiff
         markview-nvim
         neo-img
+        guess-indent-nvim
 
         #----- ripxorip plugins -----
         #bolt

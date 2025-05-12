@@ -106,4 +106,10 @@ return require('packer').startup(function()
     end
   }
 
+  use { 'nmac427/guess-indent.nvim',
+    config = function() 
+      require('guess-indent').setup {} 
+    end,
+  }
+
 end)
