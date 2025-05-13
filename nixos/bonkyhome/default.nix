@@ -69,10 +69,17 @@
     reaper
     alacritty
     cpufrequtils
+    #    cockpit
+    #    cockpit.podman
+    #    cockpit.storaged
+    obsidian
+    wine
+
     (pkgs.python3.withPackages (ps: with ps; [ pyserial python-lsp-server ]))
   ];
   nixpkgs.config.permittedInsecurePackages = [
     "olm-3.2.16"
+    "electron-27.3.11"
   ];
   systemd.services.increaseCpu = {
     description = "Enables usage of max cpu freq";
@@ -84,4 +91,5 @@
       Restart = "always";
     };
 };
+  services.cockpit.enable = true;
 }

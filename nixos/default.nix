@@ -25,6 +25,7 @@
       pciutils
       psmisc
       unzip
+      unar
       usbutils
       python3
       zsh

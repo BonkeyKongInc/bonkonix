@@ -92,8 +92,9 @@
         render-markdown-nvim
         vim-dirdiff
         markview-nvim
-        neo-img
         guess-indent-nvim
+      #neo-img
+        vimtex
 
         #----- ripxorip plugins -----
         #bolt
