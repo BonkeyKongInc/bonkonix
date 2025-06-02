@@ -58,6 +58,12 @@
       options = [ "subvol=@nix_nix" "noatime" "compress=lzo" "ssd" "space_cache=v2" ];
     };
 
+  fileSystems."/home/patrik/bulk" =
+    {
+      device = "/dev/disk/by-uuid/dev/disk/by-uuid/3eb2ae50-d051-4708-a16b-b03b26f1cdb7";
+      fsType = "ext4";
+    };
+
   zramSwap.enable = true;
 
   # Enables DHCP on each ethernet and wireless interface. In case of scripted networking
@@ -86,6 +92,7 @@
     gimp
     qucs-s
     teams
+    wkhtmltopdf
     (pkgs.python3.withPackages (ps: with ps; [ pyserial python-lsp-server ]))
   ];
    nixpkgs.config.permittedInsecurePackages = [
