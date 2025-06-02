@@ -60,8 +60,9 @@
 
   fileSystems."/home/patrik/bulk" =
     {
-      device = "/dev/disk/by-uuid/dev/disk/by-uuid/3eb2ae50-d051-4708-a16b-b03b26f1cdb7";
+      device = "/dev/disk/by-uuid/3eb2ae50-d051-4708-a16b-b03b26f1cdb7";
       fsType = "ext4";
+      options = [ "nofail" ];
     };
 
   zramSwap.enable = true;
