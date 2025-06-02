@@ -96,6 +96,9 @@ in
       alias gsd="git diff --submodule=diff | v -c 'set ft=diff' -c 'set buftype=nofile'"
       alias gre="git restore"
 
+      #Kicad alias
+      alias makekicad="python ~/dev/AirolitKicadProjectGenerator/generate.py"
+
       bindkey -v
       # bindkey ii vi-cmd-mode
       # Appends every command to the history file once it is executed
@@ -124,24 +127,108 @@ in
       fzvv() {
           local file
           file=$(rg --files --no-ignore | fzf)
-          print -s "nvim $file"
-          fc -R =(print "nvim $file")
-          nvim "$file"
+          if [ -f $file ]; then
+            print -s "nvim $file"
+            fc -R =(print "nvim $file")
+            nvim "$file"
+          fi
       }
 
       fzkk() {
-          local file
-          file=$(rg --files --no-ignore | fzf)
-          print -s "k $file"
-          fc -R =(print "k $file")
-          k "$file"
+        zle -I  # Clear ZLE input buffer
+
+        vared -p 'What would you like to do?: ' -c tmp
+
+        local path="dev"
+        case "$options" in
+          h) path="" ;;
+          w) path="Downloads" ;;
+        esac
+        echo "this is my tmp $tmp"
+        # Use fzf with explicit input/output from the TTY
+        local file
+        file=$(rg --files --no-ignore --no-messages "$HOME/$path" 2>/dev/null | fzf --height=40% < /dev/tty > /dev/tty)
+
+        if [[ -n "$file" && -f "$file" ]]; then
+          echo "Opening: $file" > /dev/tty
+          xdg-open "$file"
+        fi
+
+        zle reset-prompt  # Fix terminal prompt issues
+      }
+     fzkk-widget() {
+        zle -I                      # clear terminal input buffer
+        fzkk                        # run the actual function
+        zle reset-prompt            # redraw prompt so terminal works cleanly
       }
 
       fdd() {
         local dir
           dir=$(find ''${1:-.} -path '*/\.*' -prune \
-                          -o -type d -print 2> /dev/null | fzf +m) &&
-          cd "$dir"
+                          -o -type d -print 2> /dev/null | fzf +m --header="$2") 
+          echo "$dir"
+      }
+      fzf_cd() {
+        dir=$(fdd / "Go to dir")
+        if [[ -n $dir && -d $dir ]]; then
+          cd $dir
+        fi
+      }
+      fzf_prog() {
+        compgen -c | grep -E '^[a-zA-Z]' | grep -v '[.:]' | sort -u | fzf --header=$1
+      }
+      fzf_file() {
+        file=$(rg --files --no-ignore --no-messages $1| \
+        fzf --header="Searching for file in $1 " \
+        --with-nth=4.. --delimiter=/)
+        echo $file
+      }
+      fzf_nvim() {
+        local base_dir
+        local file
+        local count=0
+
+        base_dir=$(fdd "/home/patrik/" "Choose base dir")
+        if [[ -z $base_dir ]]; then
+          return
+        fi
+        file=$(fzf_file $base_dir)
+        if [[ -n "$file" && -f "$file" ]]; then
+          local mimetype
+          mimetype=$(xdg-mime query filetype "$file")
+          local app
+          if [[ -z mimetype ]]; then
+            app=$(fzf_prog "File has no associated app")
+          else 
+            local default_app
+            default_app=$(xdg-mime query default "$mimetype")
+              if [[ -n "$default_app" ]]; then
+                if [[ "$default_app" == *neovim* ]]; then
+                  nvim $file
+                else
+                  xdg-open "$file" 
+                fi
+              else
+                app=$(fzf_prog "File has no associated app")
+              fi
+          fi
+          if [[ -n $app ]]; then
+            $app $file
+          fi
+        fi
+        if [[ -z $file ]]; then
+          app=$(fzf_prog "Choose app to open with and reselect file?")
+          if [[ -n $app ]]; then
+            file=$(fzf_file $base_dir "to open with $app")
+            if [[ -n $file ]]; then
+              $app $file
+            fi
+            
+          fi
+        fi
+
+        #zle reset-prompt            # redraw prompt so terminal works cleanly
+
       }
 
       if [ -n "''${commands[fzf-share]}" ]; then
@@ -149,18 +236,19 @@ in
         source "$(fzf-share)/completion.zsh"
       fi
       jlc2sym() {
-        ~/dev/hw/easyeda2kicad.py/jlc2sym.sh $1
+        easyeda2kicad --full --lcsc_id=$1 --output="$PWD/airolit_eda_library/kicad/airolit"
       }
 
 
       zle -N gcam_bind
       zle -N fdd
-      zle -N fzvv
+      zle -N fzf_nvim
       zle -N fzkk
+      zle -N fzf_cd
       bindkey "^S" gcam_bind
       bindkey "^T" fzvv
-      bindkey "^A" fzkk
-      bindkey '^G' fdd
+      bindkey "^A" fzf_nvim
+      bindkey '^G' fzf_cd
       bindkey '^F' fzf-file-widget
       bindkey "^P" up-line-or-search
       bindkey "^N" down-line-or-search
@@ -224,7 +312,7 @@ in
 
       function ulg2pile() 
       {
-        nix develop ~/dev/ulog2param -c bash -c "ulog_params "$1" > params_temp && python ~/dev/ulog2param/patch_params.py params_temp > $(echo "$1" | sed 's/ulg/params/') │  && rm params_temp"
+        nix develop ~/dev/ulog2param -c bash -c "ulog_params "$1" > params_temp && python ~/dev/ulog2param/patch_params.py params_temp > $(basename "$1" | sed 's/ulg/params/') │  && rm params_temp"
       }
 
       function gkr()

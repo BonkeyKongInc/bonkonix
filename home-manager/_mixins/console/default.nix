@@ -65,6 +65,7 @@
       meson
       pkg-config
       mdr
+      obsidian
     ];
 
 
