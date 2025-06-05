@@ -1,5 +1,5 @@
 { ... }: {
   imports = [
   ];
-  programs.hyperland.enable = true;
+  programs.hyprland.enable = true;
 }

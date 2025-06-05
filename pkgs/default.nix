@@ -7,4 +7,5 @@
   #matrix-sh = pkgs.callPackage ./matrix.sh { };
   #ripxobot = pkgs.callPackage ./ripxobot { };
   syncoid = pkgs.callPackage ./syncoid { };
+  hyprpanel = pkgs.callPackage ./hyprpanel { };
 }

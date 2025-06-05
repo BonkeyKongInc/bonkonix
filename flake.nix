@@ -23,6 +23,10 @@
     talon-nix.url = "github:nix-community/talon-nix";
     talon-nix.inputs.nixpkgs.follows = "nixpkgs";
 
+    hyprpanel.url = "github:Jas-SinghFSU/HyprPanel";
+    hyprpanel.inputs.nixpkgs.follows = "nixpkgs";
+
+
     darkmode_flag.url = "github:boolean-option/true";
 
   };
@@ -34,6 +38,7 @@
     , nixos-hardware
     , agenix
     , talon-nix
+    , hyprpanel
     , darkmode_flag
     , ...
     } @ inputs:
@@ -80,7 +85,7 @@
           pkgs = pkgsFor.x86_64-linux;
           extraSpecialArgs = {
             inherit inputs outputs stateVersion darkmode;
-            desktop = "plasma";
+            desktop = "hyprland";
             hostname = "bonkyhome";
             platform = "x86_64-linux";
             username = "patrik";
@@ -130,12 +135,13 @@
               agenix.nixosModules.age
               #nixos-hardware.nixosModules.dell-xps-15-9520-nvidia
               talon-nix.nixosModules.talon
+              #hyprpanel.nixosModules.hyprpanel
             ];
             specialArgs = {
               inherit inputs outputs stateVersion;
               hostname = "bonkyhome";
               username = "patrik";
-              desktop = "plasma";
+              desktop = "hyprland";
             };
           };
           bonkynas = lib.nixosSystem {

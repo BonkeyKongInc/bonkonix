@@ -35,7 +35,6 @@
       dig
       #matrix-sh
       #wl-clipboard
-      xclip
 #      gitFull
      # gitg
       gcc
