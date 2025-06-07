@@ -3,9 +3,6 @@
   # Packages with an actual source
 
   # Personal scripts
-  key_extractor = pkgs.callPackage ./key_extractor { };
-  #matrix-sh = pkgs.callPackage ./matrix.sh { };
-  #ripxobot = pkgs.callPackage ./ripxobot { };
+  # key_extractor = pkgs.callPackage ./key_extractor { };
   syncoid = pkgs.callPackage ./syncoid { };
-  hyprpanel = pkgs.callPackage ./hyprpanel { };
 }

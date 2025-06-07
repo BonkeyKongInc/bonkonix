@@ -26,7 +26,6 @@
       tmux
       age
       bitwarden-cli
-      key_extractor
       tokei
       du-dust
       radare2
