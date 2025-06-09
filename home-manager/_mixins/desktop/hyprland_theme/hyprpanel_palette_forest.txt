@@ -1,0 +1,14 @@
+deepgreen: #4b6b05
+yellow: #dbbc7f
+deepbrown: #b5835a
+white: #fffff
+
+
+
+palette from picture:
+
+205700,7A9B37,99A891,93BB3E,93A965
+
+
+take two:
+183602,2E4B2F,091A03,4D7535,7A9B37
