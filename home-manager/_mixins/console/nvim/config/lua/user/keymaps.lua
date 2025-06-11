@@ -110,6 +110,8 @@ keymap("n", "<leader>gl", "<cmd>Gitsigns blame_line<cr>", opts)
 keymap("n", "<leader>fq", ":bp|bd # <cr>", opts)
 keymap("n", "<leader>il", "<cmd>lua vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())<cr>", opts)
 
+keymap("n", "<leader>re", ":Regedit ", opts)
+keymap("n", "<leader>reo", ":Regedit open<cr>", opts)
 --keymap("n", "gD", "<cmd>lua vim.lsp.buf.declaration()<CR>", opts)
 --keymap("n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", opts)
 --keymap("n", "K", "<cmd>lua vim.lsp.buf.hover()<CR>", opts)

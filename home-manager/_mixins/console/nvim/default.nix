@@ -46,6 +46,16 @@
     };
   };
 
+  regedit  = pkgs.vimUtils.buildVimPlugin {
+    name = "jmattaa";
+    src = pkgs.fetchFromGitHub {
+      owner = "jmattaa";
+      repo = "regedit.vim";
+      rev = "e211d89";
+      hash = "sha256-yCb3QZy2Np/hllpwObsbfr8QxyYC4OF7TujmBce5c54=";
+    };
+  };
+
   in 
   {
     programs.neovim = {
@@ -95,6 +105,7 @@
         guess-indent-nvim
       #neo-img
         vimtex
+        regedit
 
         #----- ripxorip plugins -----
         #bolt

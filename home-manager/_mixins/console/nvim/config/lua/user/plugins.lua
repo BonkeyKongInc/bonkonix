@@ -57,7 +57,7 @@ return require('packer').startup(function()
   -- LSP
   --use "neovim/nvim-lspconfig" -- enable LSP
   --use "williamboman/nvim-lsp-installer" -- simple to use language server installer
-
+  use('jmattaa/regedit.vim')
   use "rlane/pounce.nvim"
   use "ripxorip/aerojump.nvim"
   -- Telescope
