@@ -88,13 +88,7 @@
     gomuks
     obs-studio
     remmina
-    kicad
-    prusa-slicer
     wireshark
-    gimp
-    qucs-s
-    teams
-    wkhtmltopdf
     (pkgs.python3.withPackages (ps: with ps; [ pyserial python-lsp-server ]))
   ];
    nixpkgs.config.permittedInsecurePackages = [

@@ -63,16 +63,8 @@
     gomuks
     obs-studio
     remmina
-    kicad
-    prusa-slicer
     wireshark
-    reaper
-    alacritty
     cpufrequtils
-    #    cockpit
-    #    cockpit.podman
-    #    cockpit.storaged
-    obsidian
     wine
 
     (pkgs.python3.withPackages (ps: with ps; [ pyserial python-lsp-server ]))
