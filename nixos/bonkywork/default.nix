@@ -11,7 +11,8 @@
   ];
 
   hardware.bluetooth.enable = true;
-
+  hardware.nvidia.package = config.boot.kernelPackages.nvidiaPackages.stable;
+  services.xserver.videoDrivers = [ "nvidia" ]; 
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
