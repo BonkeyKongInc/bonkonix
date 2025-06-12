@@ -12,6 +12,7 @@
       "${config.xdg.configHome}/starship.toml".text = builtins.readFile ./newstarship.toml;
     };
 
+    # common cli apps for all hosts
     packages = with pkgs; [
       tldr
       starship
@@ -32,14 +33,7 @@
       wireguard-tools
       jq
       dig
-      #matrix-sh
-      #wl-clipboard
-#      gitFull
-     # gitg
       gcc
-      llpp
-      #gfortran
-      speedcrunch
       python311Packages.numpy
       python311Packages.libxml2
       python311Packages.libxslt
@@ -48,22 +42,15 @@
       libxml2
       cmake
       libclang
-      gparted
       parted
       rpiboot
-      pinta
-      microsoft-edge
       htop
-      scrcpy
-      libreoffice
-      gcc-arm-embedded-9
       nmap
       iperf
-      #astyle
       meson
       pkg-config
       mdr
-      obsidian
+      ninja
     ];
 
 

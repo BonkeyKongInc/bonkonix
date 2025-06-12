@@ -26,6 +26,17 @@ in
     sessionPath = [ "$HOME/.local/bin" ];
     inherit stateVersion;
     inherit username;
+    # Gui apps that should be common for all
+    packages = with pkgs; [
+      pinta
+      obsidian
+      libreoffice
+      gparted
+      speedcrunch
+      llpp
+      kicad
+    ];
+
   };
 
   nixpkgs = {
