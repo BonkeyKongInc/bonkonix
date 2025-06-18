@@ -106,6 +106,7 @@
       #neo-img
         vimtex
         regedit
+        registers-nvim
 
         #----- ripxorip plugins -----
         #bolt

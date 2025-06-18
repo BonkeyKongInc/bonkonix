@@ -101,9 +101,13 @@
     "olm-3.2.16"
     "electron-27.3.11"
     ];
-  nixpkgs.config.allowUnsupportedSystem = true;
-#  security.wireshark = {
-#    enable = true;
-#    allowedUsers = [ "${username}"];
-#  };
+    nixpkgs.config.allowUnsupportedSystem = true;
+    security.wrappers.dumpcap = {
+      source = "${pkgs.wireshark}/bin/dumpcap";
+      owner = "root";
+      group = "wireshark";
+      capabilities = "cap_net_raw,cap_net_admin+eip";
+    };
+
+  users.groups.wireshark = {};
 }
