@@ -7,7 +7,7 @@
     ../_mixins/services/flatpak.nix
     ../_mixins/services/pipewire.nix
     ../_mixins/virt
-     ../_mixins/services/fix_interrupt.nix
+    ../_mixins/services/fix_interrupt.nix
     ../_mixins/streaming
     ../_mixins/firefox
   ];
@@ -86,7 +86,7 @@
     wantedBy = [ "multi-user.target" ];
     after = [ "multi-user.target" ];
     serviceConfig = {
-      ExecStart = "cpufreq-set -f `cat /sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq`";
+      ExecStart = "cpufreq-set -f $(cat /sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq)";
       Type = "simple";
       Restart = "always";
     };

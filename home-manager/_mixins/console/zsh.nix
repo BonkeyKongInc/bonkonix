@@ -64,7 +64,7 @@ in
 
       alias markdown_preview="grip -b"
 
-      alias tm='tmux'
+      alias tm='tm_launch'
       # PX4 aliases
       alias buildpx4="./Tools/docker_run.sh 'make px4_fmu-v5_multicopter'"
       alias buildpx4_x1="./Tools/docker_run.sh 'make cubepilot_cubeorange_default'"
@@ -238,6 +238,22 @@ in
       jlc2sym() {
         easyeda2kicad --full --lcsc_id=$1 --output="$PWD/airolit_eda_library/kicad/airolit"
       }
+
+      tm_launch() {
+        if tmux ls 2>/dev/null | grep -q wind; then
+          echo "tmux is running somewhere"
+          if [[ -z $TMUX ]]; then
+            echo "tmux is not running in this shell, attach"
+            tmux attach
+          else
+            echo "tmux is running in this shell, do nothing"
+          fi
+        else
+          echo "no tmux running anywhere let open a new"
+          tmux
+        fi
+      }
+
 
 
       zle -N gcam_bind

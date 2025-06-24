@@ -24,6 +24,7 @@
     vlc
     kitty
     spotify
+    feh
   ];
 
 }

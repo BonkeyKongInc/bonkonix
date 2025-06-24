@@ -21,16 +21,16 @@ return require('packer').startup(function()
     "iamcco/markdown-preview.nvim",
     run = function() vim.fn["mkdp#util#install"]() end,
   })
-  use({
-    'MeanderingProgrammer/render-markdown.nvim',
-    after = { 'nvim-treesitter' },
-    -- requires = { 'echasnovski/mini.nvim', opt = true }, -- if you use the mini.nvim suite
-    -- requires = { 'echasnovski/mini.icons', opt = true }, -- if you use standalone mini plugins
-     requires = { 'nvim-tree/nvim-web-devicons', opt = true }, -- if you prefer nvim-web-devicons
-    config = function()
-        require('render-markdown').setup({})
-    end,
-})
+--  use({
+--    'MeanderingProgrammer/render-markdown.nvim',
+--    after = { 'nvim-treesitter' },
+--    -- requires = { 'echasnovski/mini.nvim', opt = true }, -- if you use the mini.nvim suite
+--    -- requires = { 'echasnovski/mini.icons', opt = true }, -- if you use standalone mini plugins
+--     requires = { 'nvim-tree/nvim-web-devicons', opt = true }, -- if you prefer nvim-web-devicons
+--    config = function()
+--        require('render-markdown').setup({})
+--    end,
+--})
   --use {'iamcco/markdown-preview.nvim', run = 'cd app && npm install', cmd = 'MarkdownPreview'}
 
   -- Color scheme
@@ -57,7 +57,13 @@ return require('packer').startup(function()
   -- LSP
   --use "neovim/nvim-lspconfig" -- enable LSP
   --use "williamboman/nvim-lsp-installer" -- simple to use language server installer
-
+  use('jmattaa/regedit.vim')
+  use {
+    "tversteeg/registers.nvim",
+    config = function()
+      require("registers").setup()
+    end,
+  }
   use "rlane/pounce.nvim"
   use "ripxorip/aerojump.nvim"
   -- Telescope
@@ -97,14 +103,14 @@ return require('packer').startup(function()
       require('gitsigns').setup()
     end
   }
-  use { 'Skardyy/neo-img',
-    build = function()
-      require('neo-img').install()
-    end,
-    config = function()
-      require('neo-img').setup()
-    end
-  }
+--  use { 'Skardyy/neo-img',
+--    build = function()
+--      require('neo-img').install()
+--    end,
+--    config = function()
+--      require('neo-img').setup()
+--    end
+--  }
 
   use { 'nmac427/guess-indent.nvim',
     config = function() 

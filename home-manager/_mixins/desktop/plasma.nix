@@ -1,8 +1,12 @@
-{ lib, ... }:
+{ lib, pkgs, ... }:
 with lib.hm.gvariant;
 {
   gtk = { };
   services.kdeconnect.enable = true;
 
-  home.file = { };
+  home= { 
+    packages = with pkgs; [
+      xclip
+    ];
+  };
 }

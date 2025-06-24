@@ -26,7 +26,6 @@
       tmux
       age
       bitwarden-cli
-      key_extractor
       tokei
       du-dust
       radare2
@@ -35,7 +34,6 @@
       dig
       #matrix-sh
       #wl-clipboard
-      xclip
 #      gitFull
      # gitg
       gcc
