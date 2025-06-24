@@ -45,7 +45,7 @@ in
         "last-working-dir"
       ];
     };
-    initExtra = ''
+    initContent = ''
        alias ws="cd ~/dev/"
        alias c="cd"
        alias ..="cd .."

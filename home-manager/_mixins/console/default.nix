@@ -56,7 +56,7 @@
       htop
       scrcpy
       libreoffice
-      gcc-arm-embedded-9
+      gcc-arm-embedded-13
       nmap
       iperf
       #astyle
