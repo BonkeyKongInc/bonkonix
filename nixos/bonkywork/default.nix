@@ -12,7 +12,7 @@
 
   hardware.bluetooth.enable = true;
   hardware.nvidia.package = config.boot.kernelPackages.nvidiaPackages.stable;
-  services.xserver.videoDrivers = [ "nvidia" ]; 
+  services.xserver.videoDrivers = [ "nvidia" ];
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
@@ -81,7 +81,6 @@
 
   # In order for VSCode remote to work
   programs.nix-ld.enable = true;
-  programs.talon.enable = true;
   programs.adb.enable = true;
 
   environment.systemPackages = with pkgs; [
@@ -97,17 +96,17 @@
     wkhtmltopdf
     (pkgs.python3.withPackages (ps: with ps; [ pyserial python-lsp-server ]))
   ];
-   nixpkgs.config.permittedInsecurePackages = [
+  nixpkgs.config.permittedInsecurePackages = [
     "olm-3.2.16"
     "electron-27.3.11"
-    ];
-    nixpkgs.config.allowUnsupportedSystem = true;
-    security.wrappers.dumpcap = {
-      source = "${pkgs.wireshark}/bin/dumpcap";
-      owner = "root";
-      group = "wireshark";
-      capabilities = "cap_net_raw,cap_net_admin+eip";
-    };
+  ];
+  nixpkgs.config.allowUnsupportedSystem = true;
+  security.wrappers.dumpcap = {
+    source = "${pkgs.wireshark}/bin/dumpcap";
+    owner = "root";
+    group = "wireshark";
+    capabilities = "cap_net_raw,cap_net_admin+eip";
+  };
 
-  users.groups.wireshark = {};
+  users.groups.wireshark = { };
 }

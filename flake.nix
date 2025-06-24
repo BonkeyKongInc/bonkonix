@@ -1,7 +1,7 @@
 {
   description = "Bonkonix NixOS flake";
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-24.11";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-25.05";
     # You can access packages and modules from different nixpkgs revs at the
     # same time. See 'unstable-packages' overlay in 'overlays/default.nix'.
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
@@ -9,7 +9,7 @@
     disko.url = "github:nix-community/disko";
     disko.inputs.nixpkgs.follows = "nixpkgs";
 
-    home-manager.url = "github:nix-community/home-manager/release-24.11";
+    home-manager.url = "github:nix-community/home-manager/release-25.05";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
     nix-formatter-pack.url = "github:Gerschtli/nix-formatter-pack";
@@ -19,9 +19,6 @@
 
     agenix.url = "github:ryantm/agenix";
     agenix.inputs.nixpkgs.follows = "nixpkgs";
-
-    talon-nix.url = "github:nix-community/talon-nix";
-    talon-nix.inputs.nixpkgs.follows = "nixpkgs";
 
     hyprpanel.url = "github:Jas-SinghFSU/HyprPanel";
     hyprpanel.inputs.nixpkgs.follows = "nixpkgs";
@@ -37,7 +34,6 @@
     , nixpkgs
     , nixos-hardware
     , agenix
-    , talon-nix
     , hyprpanel
     , darkmode_flag
     , ...
@@ -47,7 +43,7 @@
       lib = nixpkgs.lib // home-manager.lib;
 
       # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
-      stateVersion = "24.11";
+      stateVersion = "25.05";
 
       systems = [ "x86_64-linux" "aarch64-linux" ];
       forEachSystem = f: lib.genAttrs systems (sys: f pkgsFor.${sys});
@@ -120,7 +116,6 @@
               ./nixos
               agenix.nixosModules.age
               nixos-hardware.nixosModules.dell-xps-15-9520-nvidia
-              talon-nix.nixosModules.talon
             ];
             specialArgs = {
               inherit inputs outputs stateVersion;
@@ -134,7 +129,6 @@
               ./nixos
               agenix.nixosModules.age
               #nixos-hardware.nixosModules.dell-xps-15-9520-nvidia
-              talon-nix.nixosModules.talon
               #hyprpanel.nixosModules.hyprpanel
             ];
             specialArgs = {
@@ -149,7 +143,6 @@
               ./nixos
               agenix.nixosModules.age
               #nixos-hardware.nixosModules.dell-xps-15-9520-nvidia
-              talon-nix.nixosModules.talon
             ];
             specialArgs = {
               inherit inputs outputs stateVersion;

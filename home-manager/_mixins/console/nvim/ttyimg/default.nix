@@ -15,7 +15,7 @@ let
     #go = pkgs.go_1_23; # Use Go 1.23 (latest available)
 
     #overrideAttrs = [go = pkgs.go_1_23_3];  # Override Go version to 1.23.3](oldAttrs: {
-      
+
   };
 in
 {

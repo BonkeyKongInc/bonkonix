@@ -5,7 +5,7 @@
     wantedBy = [ "multi-user.target" ];
     unitConfig = {
       Description = "Disable bad interrupt";
-      After= [ "multi-user.target" ];
+      After = [ "multi-user.target" ];
       #Requires = [ "local-fs.targetz" ];
       #After = [ "local-fs.target" ];
     };
@@ -13,7 +13,7 @@
       Type = "oneshot";
       ExecStart = "${pkgs.bash}/bin/bash /home/patrik/bonk/.fix_interrupt.sh";
       WorkingDirectory = "/home/patrik/bonk/";
-      RemainAfterExit="yes";
+      RemainAfterExit = "yes";
     };
   };
 }

@@ -1,5 +1,5 @@
 { pkgs, darkmode, config, ... }:
-  let
+let
   pounce = pkgs.vimUtils.buildVimPlugin {
     name = "pounce";
     src = pkgs.fetchFromGitHub {
@@ -46,7 +46,7 @@
     };
   };
 
-  regedit  = pkgs.vimUtils.buildVimPlugin {
+  regedit = pkgs.vimUtils.buildVimPlugin {
     name = "jmattaa";
     src = pkgs.fetchFromGitHub {
       owner = "jmattaa";
@@ -56,97 +56,97 @@
     };
   };
 
-  in 
-  {
-    programs.neovim = {
-      enable = true;
-      viAlias = true;
-      vimAlias = true;
-      vimdiffAlias = true;
+in
+{
+  programs.neovim = {
+    enable = true;
+    viAlias = true;
+    vimAlias = true;
+    vimdiffAlias = true;
 
-      plugins = with pkgs.vimPlugins; [
-        packer-nvim
-        popup-nvim
-        #plenary-nvim
-        lualine-nvim
-        nightfox-nvim
-        nvim-cmp
-        cmp-buffer
-        cmp-path
-        cmp-cmdline
-        cmp_luasnip
-        #cmp-nvim-lsp
-        #cmp-nvim-lua
-        #luasnip
-        nvim-lspconfig
-        #lsp installer - not found
-        pounce
-        telescope-nvim
-        telescope-live-grep-args-nvim
-        telescope-changedfiles 
-        neoscroll-nvim
-        gitsigns-nvim
-        nvim-treesitter.withAllGrammars
-        fzf-vim
-        nvim-web-devicons
-        moonfly
-        markdown-preview-nvim
-        asyncrun-vim
-        vim-markdown-composer
-        render-markdown-nvim
-        aerojump
+    plugins = with pkgs.vimPlugins; [
+      packer-nvim
+      popup-nvim
+      #plenary-nvim
+      lualine-nvim
+      nightfox-nvim
+      nvim-cmp
+      cmp-buffer
+      cmp-path
+      cmp-cmdline
+      cmp_luasnip
+      #cmp-nvim-lsp
+      #cmp-nvim-lua
+      #luasnip
+      nvim-lspconfig
+      #lsp installer - not found
+      pounce
+      telescope-nvim
+      telescope-live-grep-args-nvim
+      telescope-changedfiles
+      neoscroll-nvim
+      gitsigns-nvim
+      nvim-treesitter.withAllGrammars
+      fzf-vim
+      nvim-web-devicons
+      moonfly
+      markdown-preview-nvim
+      asyncrun-vim
+      vim-markdown-composer
+      render-markdown-nvim
+      aerojump
 
-        markdown-preview-nvim
-        asyncrun-vim
-        vim-markdown-composer
-        render-markdown-nvim
-        vim-dirdiff
-        markview-nvim
-        guess-indent-nvim
+      markdown-preview-nvim
+      asyncrun-vim
+      vim-markdown-composer
+      render-markdown-nvim
+      vim-dirdiff
+      markview-nvim
+      guess-indent-nvim
       #neo-img
-        vimtex
-        regedit
-        registers-nvim
+      vimtex
+      regedit
+      registers-nvim
 
-        #----- ripxorip plugins -----
-        #bolt
-        #nvim-lspconfig
-        #gitsigns-nvim
-        #catppuccin-nvim
-        #nvim-compe
-        #vim-fugitive
-        #suda-vim
-        #nvim-autopairs
-        #vim-ripgrep
-        #github-nvim-theme
-        # FIXME These shall be created by me
-        #vim-ripgrep
-        #ripxorip/aerojump
-        #ripxorip/utils
-        #editorconfig-vim
-        #neoformat
-        #lsp_signature-nvim
-        #vim-vsnip
-        #nvim-treesitter.withAllGrammars
-        #playground
-        #fzf-vim
-        #vim-tmux-navigator
-        #vim-unimpaired
-      ];
+      #----- ripxorip plugins -----
+      #bolt
+      #nvim-lspconfig
+      #gitsigns-nvim
+      #catppuccin-nvim
+      #nvim-compe
+      #vim-fugitive
+      #suda-vim
+      #nvim-autopairs
+      #vim-ripgrep
+      #github-nvim-theme
+      # FIXME These shall be created by me
+      #vim-ripgrep
+      #ripxorip/aerojump
+      #ripxorip/utils
+      #editorconfig-vim
+      #neoformat
+      #lsp_signature-nvim
+      #vim-vsnip
+      #nvim-treesitter.withAllGrammars
+      #playground
+      #fzf-vim
+      #vim-tmux-navigator
+      #vim-unimpaired
+    ];
 
-      extraPackages = with pkgs; [
-        tree-sitter
-      ];
+    extraPackages = with pkgs; [
+      tree-sitter
+    ];
 
-      extraConfig = ''
-        :luafile ~/.config/nvim/init.lua
-      '';
-    };
+    extraConfig = ''
+      :luafile ~/.config/nvim/init.lua
+    '';
+  };
 
-    # FIXME Continue here, by generating the colorscheme.lua file according to the darkmode variable
-    # It shall be written and probably be removed from the local .config folder
-    xdg.configFile.nvim = {
-      source = ./config;
-      recursive = true;
-    };
+  # FIXME Continue here, by generating the colorscheme.lua file according to the darkmode variable
+  # It shall be written and probably be removed from the local .config folder
+  xdg.configFile.nvim = {
+    source = ./config;
+    recursive = true;
+  };
 }

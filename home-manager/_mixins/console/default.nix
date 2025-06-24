@@ -34,8 +34,8 @@
       dig
       #matrix-sh
       #wl-clipboard
-#      gitFull
-     # gitg
+      #      gitFull
+      # gitg
       gcc
       llpp
       #gfortran
