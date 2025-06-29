@@ -8,5 +8,7 @@ with lib.hm.gvariant;
   home.packages = with pkgs; [ 
     fastfetch
     reaper
+    libsecret
+    networkmanagerapplet 
   ];
 }

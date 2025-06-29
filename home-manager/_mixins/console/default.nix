@@ -51,6 +51,7 @@
       pkg-config
       mdr
       ninja
+      gcc-arm-embedded-9 
     ];
 
 

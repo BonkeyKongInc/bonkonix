@@ -9,6 +9,13 @@ in
   services.gnome.gnome-keyring.enable = true;
   environment.etc."wallpapers".source = lib.mkForce wallpapers;
 
+  networking.networkmanager.enable = true;
+  networking.networkmanager.settings = {
+          device = {
+          "wifi.scan-rand-mac-address" = false;
+        };
+    };
+
   services.xserver.displayManager.lightdm = {
     enable = true;
     greeters.slick = {
