@@ -85,7 +85,7 @@
           pkgs = pkgsFor.x86_64-linux;
           extraSpecialArgs = {
             inherit inputs outputs stateVersion darkmode;
-            desktop = "hyprland";
+            desktop = "xfce";
             hostname = "bonkyhome";
             platform = "x86_64-linux";
             username = "patrik";
@@ -141,7 +141,7 @@
               inherit inputs outputs stateVersion;
               hostname = "bonkyhome";
               username = "patrik";
-              desktop = "hyprland";
+              desktop = "xfce";
             };
           };
           bonkynas = lib.nixosSystem {
