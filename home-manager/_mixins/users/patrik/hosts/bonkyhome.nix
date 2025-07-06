@@ -10,5 +10,6 @@ with lib.hm.gvariant;
     reaper
     libsecret
     networkmanagerapplet 
+    betaflight-configurator
   ];
 }

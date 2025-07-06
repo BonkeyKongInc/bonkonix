@@ -9,6 +9,7 @@ in
   xdg.portal.enable = true;
   xdg.portal.extraPortals = with pkgs; [ xdg-desktop-portal-gtk ];
 
+  environment.etc."wallpapers".source = lib.mkForce wallpapers;
   services.xserver.displayManager.lightdm = {
     enable = true;
     greeters.slick = {
