@@ -77,7 +77,11 @@ local live_grep_args = require("telescope").extensions.live_grep_args
 local live_grep_args_shortcuts = require("telescope-live-grep-args.shortcuts")
 --keymap.set("n", "<leader>fs", live_grep_args_shortcuts.grep_word_under_cursor)
 keymap("n", "<leader>fa", "<cmd>lua require('telescope').extensions.live_grep_args.live_grep_args()<cr>", opts)
-keymap("n", "<leader>fad", "<cmd>Telescope live_grep search_dirs=%:p:h desc='Find files in'%:p:h<cr>", opts)
+keymap("n", "<leader>fad",
+  "<cmd>lua require('telescope.builtin').live_grep({ search_dirs = { vim.fn.expand('%:p:h') }, prompt_title = 'Find in ' .. vim.fn.expand('%:p:h') })<cr>",
+  opts
+)
+
 --keymap("n", "<leader>fs", "<cmd>lua require('telescope').extensions.live_grep_args.shortcuts.grep_word_under_cursor()<cr>", opts)
 keymap("n", "<leader>fs", "<cmd>lua require('telescope-live-grep-args.shortcuts').grep_word_under_cursor()<cr>", opts)
  
