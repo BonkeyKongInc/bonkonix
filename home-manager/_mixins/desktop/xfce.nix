@@ -19,8 +19,10 @@ with lib.hm.gvariant;
         "80:focused && class_g = 'kitty'"
         "50:!focused && class_g = 'kitty'"
         "90:class_g = 'firefox'"
+        "70:class_g = 'Spotify'"
         "90:class_g = 'URxvt'"
         "50:class_g = 'Xfce4-panel'"
+        "90:class_g = 'Xfce4-applications'"
 
       ];
       blur-method = "dual_kawase";

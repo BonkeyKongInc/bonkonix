@@ -11,5 +11,7 @@ with lib.hm.gvariant;
     libsecret
     networkmanagerapplet 
     betaflight-configurator
+    musescore
+    nextcloud-client
   ];
 }
