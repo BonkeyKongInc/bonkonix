@@ -12,7 +12,29 @@
 
   hardware.bluetooth.enable = true;
   hardware.nvidia.package = config.boot.kernelPackages.nvidiaPackages.stable;
+  #hardware.opengl.enable = true;
   services.xserver.videoDrivers = [ "nvidia" ];
+  hardware.opengl  = {
+    enable = true;
+    driSupport32Bit = true;
+
+    extraPackages = with pkgs; [ nvidia-vaapi-driver ];
+    extraPackages32 = with pkgs; [ ];
+  };
+
+  hardware.nvidia = {
+    modesetting.enable = true; # Needed for Wayland + EGL
+    powerManagement.enable = true;
+    prime = {
+      offload = {
+        enable = true;
+        enableOffloadCmd = true;
+      };
+      intelBusId = "PCI:0:2:0";
+      nvidiaBusId = "PCI:1:0:0";
+    };
+  };
+
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
@@ -30,6 +52,8 @@
   # Hdd sleep udev rule:
   services.udev.extraRules = ''
     SUBSYSTEM=="usbmon", GROUP="wireshark", MODE="0640"
+    # STM32 DFU device permission fix
+    SUBSYSTEM=="usb", ATTR{idVendor}=="0483", ATTR{idProduct}=="df11", MODE="0666", GROUP="dialout"
   '';
 
   fileSystems."/" =
@@ -95,6 +119,8 @@
     teams
     wkhtmltopdf
     (pkgs.python3.withPackages (ps: with ps; [ pyserial python-lsp-server ]))
+    glxinfo 
+    vulkan-tools 
   ];
   nixpkgs.config.permittedInsecurePackages = [
     "olm-3.2.16"
