@@ -59,6 +59,7 @@ in
        alias r2c="r2 -e asm.cpu=cortex"
        alias rgi="rg --no-ignore --iglob !tags "
        alias sshno='ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no'
+       alias scpno='scp -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no'
 
        alias rr="rax2 -r"
 
@@ -68,6 +69,7 @@ in
        # PX4 aliases
        alias buildpx4="./Tools/docker_run.sh 'make px4_fmu-v5_multicopter'"
        alias buildpx4_x1="./Tools/docker_run.sh 'make cubepilot_cubeorange_default'"
+       alias buildpx4_cx10="./Tools/docker_run.sh 'make cubepilot_cubeorangeplus_default'"
        alias buildpx4io="./Tools/docker_run.sh 'make px4io_update'"
        alias buildpx4all="./Tools/docker_run.sh 'make px4io_update' && ./Tools/docker_run.sh 'make px4_fmu-v5_multicopter'"
        alias loadpx4="./Tools/px_uploader.py build/px4_fmu-v5_multicopter/px4_fmu-v5_multicopter.px4 --port /dev/ttyACM0"
@@ -329,6 +331,12 @@ in
        function ulg2pile() 
        {
          nix develop ~/dev/ulog2param -c bash -c "ulog_params "$1" > params_temp && python ~/dev/ulog2param/patch_params.py params_temp > $(basename "$1" | sed 's/ulg/params/') │  && rm params_temp"
+       }
+
+       function refd()
+       {
+          currdir=$PWD
+          cd ../ && cd $currdir
        }
 
        function gkr()
