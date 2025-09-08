@@ -49,8 +49,7 @@ in
        alias ws="cd ~/dev/"
        alias c="cd"
        alias ..="cd .."
-       alias v="nvim"
-       alias v.="nvim ."
+       alias nv="nvim ."
        alias l="exa -la --git --icons"
        alias cat='bat'
        alias less='bat'
@@ -344,7 +343,27 @@ in
          gitk --remotes="$1" &
        }
 
-       ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=4'
+       _git_nuke() {
+          local target="$1"
+          if [[ -z "$target" ]]; then
+              echo "Usage: git nuke <branch>"
+              return 1
+          fi
+          git checkout -f "$target" || return 1
+          git reset --hard "$target"
+          git clean -fdx
+          git submodule deinit -f --all
+          rm -rf .git/modules/*
+          git submodule update --init --recursive
+      }
+
+      # branch completion
+      autoload -Uz _git
+      compdef _git _git_nuke
+
+      # optional Git alias
+      alias git-nuke='_git_nuke'
+      ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=4'
 
        export PICO_SDK_PATH=~/dev/pico-sdk
 
