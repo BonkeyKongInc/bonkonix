@@ -102,6 +102,7 @@
       auto-optimise-store = true;
       experimental-features = [ "nix-command" "flakes" ];
     };
+    settings.trusted-users = [ "root" "patrik" ];
   };
 
   programs = {
@@ -115,4 +116,5 @@
   networking.firewall.enable = false;
 
   system.stateVersion = stateVersion;
+  boot.kernel.sysctl."kernel.dmesg_restrict" = false;
 }
