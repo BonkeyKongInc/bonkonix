@@ -6,6 +6,13 @@ in
   ];
   services.xserver.enable = true;
   services.xserver.desktopManager.xfce.enable = true;
+  programs.thunar.plugins = with pkgs.xfce; [
+      thunar-archive-plugin
+  ];
+  environment.systemPackages = with pkgs; [
+    xarchiver
+  ];
+
   xdg.portal.enable = true;
   xdg.portal.extraPortals = with pkgs; [ xdg-desktop-portal-gtk ];
 
