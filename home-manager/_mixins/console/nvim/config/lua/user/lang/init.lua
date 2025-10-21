@@ -102,11 +102,10 @@ capabilities.textDocument.completion.completionItem.snippetSupport = true;
 --    capabilities = capabilities;
 --    on_attach = on_attach
 --}
-
 --require'lspconfig'.ts_lsserver.setup{on_attach=on_attach}
-require'lspconfig'.pylsp.setup{on_attach=on_attach, cmd={"pylsp"}}
-require'lspconfig'.rust_analyzer.setup{on_attach=on_attach}
-require'lspconfig'.clangd.setup{on_attach=on_attach}
+--require'lspconfig'.pylsp.setup{on_attach=on_attach, cmd={"pylsp"}, capabilities=capabilities}
+local cmp_capabilities = require('cmp_nvim_lsp').default_capabilities()
+
 
 -- require'lspinstall'.setup()
 -- local servers = require'lspinstall'.installed_servers()

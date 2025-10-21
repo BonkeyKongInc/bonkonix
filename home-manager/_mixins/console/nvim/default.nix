@@ -65,7 +65,7 @@
       vimdiffAlias = true;
 
       plugins = with pkgs.vimPlugins; [
-        packer-nvim
+        #packer-nvim
         popup-nvim
         #plenary-nvim
         lualine-nvim
@@ -75,9 +75,10 @@
         cmp-path
         cmp-cmdline
         cmp_luasnip
+        cmp-nvim-lsp
         #cmp-nvim-lsp
         #cmp-nvim-lua
-        #luasnip
+        luasnip
         nvim-lspconfig
         #lsp installer - not found
         pounce
@@ -86,6 +87,7 @@
         telescope-changedfiles 
         neoscroll-nvim
         gitsigns-nvim
+        nvim-tree-lua
         nvim-treesitter.withAllGrammars
         fzf-vim
         nvim-web-devicons
@@ -107,6 +109,7 @@
         vimtex
         regedit
         registers-nvim
+        ultimate-autopair-nvim
 
         #----- ripxorip plugins -----
         #bolt
@@ -136,6 +139,10 @@
 
       extraPackages = with pkgs; [
         tree-sitter
+        nil
+        lua-language-server
+        pyright
+        python312Packages.jedi
       ];
 
       extraConfig = ''
