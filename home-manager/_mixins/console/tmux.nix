@@ -73,7 +73,9 @@ let   theme = ''
         unbind-key C-a
         bind-key C-b send-prefix
 
-        set -g default-terminal "xterm-256color"
+        #set -g default-terminal "xterm-256color"
+        set-option -g default-terminal "screen-256color"
+
         set -ga terminal-overrides ",*256col*:Tc"
 
         ## Vim style splitting
