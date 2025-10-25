@@ -56,6 +56,15 @@
     };
   };
 
+  dir-telescope  = pkgs.vimUtils.buildVimPlugin {
+    name = "dir-telescope";
+    src = pkgs.fetchFromGitHub {
+      owner = "princejoogie";
+      repo = "dir-telescope.nvim";
+      rev = "805405b9f98dc3470f8676773dc0e6151a9158ed";
+      hash = "sha256-B/cZUkjAVi52jopBwZJYmiaVf8PqnawusnSGOx7dDqs=";
+    };
+  };
   in 
   {
     programs.neovim = {
@@ -85,6 +94,7 @@
         telescope-nvim
         telescope-live-grep-args-nvim
         telescope-changedfiles 
+        dir-telescope
         neoscroll-nvim
         gitsigns-nvim
         nvim-tree-lua
@@ -110,6 +120,7 @@
         regedit
         registers-nvim
         ultimate-autopair-nvim
+        hardtime-nvim
 
         #----- ripxorip plugins -----
         #bolt
@@ -143,6 +154,8 @@
         lua-language-server
         pyright
         python312Packages.jedi
+        bash-language-server
+        shellcheck
       ];
 
       extraConfig = ''

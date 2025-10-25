@@ -72,15 +72,27 @@ keymap("x", "<A-k>", ":move '<-2<CR>gv-gv", opts)
 -- keymap("t", "<C-h>", "<C-\\><C-N><C-w>h", term_opts)
 
 -- keymaps for qwerty
-keymap("", "<leader>fd", "<cmd>FZF <cr>", opts)
+--keymap("", "<leader>fd", "<cmd>FZF <cr>", opts)
+--
+-- Telescope
 local live_grep_args = require("telescope").extensions.live_grep_args 
 local live_grep_args_shortcuts = require("telescope-live-grep-args.shortcuts")
+local telescope_bonky = require("user.telescope_bonky")
 --keymap.set("n", "<leader>fs", live_grep_args_shortcuts.grep_word_under_cursor)
+keymap("n", "<leader>fd", ":Telescope find_files<cr>", opts)
 keymap("n", "<leader>fa", "<cmd>lua require('telescope').extensions.live_grep_args.live_grep_args()<cr>", opts)
+keymap("n", "<leader>tt", "<cmd>Telescope<cr>", opts)
 keymap("n", "<leader>fad",
   "<cmd>lua require('telescope.builtin').live_grep({ search_dirs = { vim.fn.expand('%:p:h') }, prompt_title = 'Find in ' .. vim.fn.expand('%:p:h') })<cr>",
   opts
 )
+
+--keymap('n', '<leader>ff', "<cmd>lua telescope_bonky.interactive_find_files({ desc = 'Find files (interactive, stateful)' })<cr>", opts)
+
+vim.keymap.set('n', '<leader>ff', function()
+  telescope_bonky.interactive_dir_telescope()
+end, { noremap = true, silent = true, desc = "Find files (interactive, stateful)" })
+
 
 --keymap("n", "<leader>fs", "<cmd>lua require('telescope').extensions.live_grep_args.shortcuts.grep_word_under_cursor()<cr>", opts)
 keymap("n", "<leader>fs", "<cmd>lua require('telescope-live-grep-args.shortcuts').grep_word_under_cursor()<cr>", opts)

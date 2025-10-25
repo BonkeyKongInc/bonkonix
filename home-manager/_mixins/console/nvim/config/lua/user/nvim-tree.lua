@@ -139,7 +139,7 @@ nvim_tree.setup {
   on_attach = on_attach,
   update_cwd = true,
   diagnostics = {
-    enable = true,
+    enable = false,
     icons = {
       hint = "",
       info = "",
