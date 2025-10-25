@@ -99,6 +99,10 @@ in
       #Kicad alias
       alias makekicad="python ~/dev/AirolitKicadProjectGenerator/generate.py"
 
+      # transmission alias
+      alias torl="transmission-remote -l"
+      alias tor="transmission-remote"
+
       bindkey -v
       # bindkey ii vi-cmd-mode
       # Appends every command to the history file once it is executed

@@ -77,5 +77,6 @@
   ];
   nixpkgs.config.permittedInsecurePackages = [
     "olm-3.2.16"
+    "electron-27.3.11"
   ];
 }

@@ -34,7 +34,6 @@ in
       gparted
       speedcrunch
       llpp
-      kicad
     ];
 
   };

@@ -13,5 +13,6 @@ with lib.hm.gvariant;
     betaflight-configurator
     musescore
     nextcloud-client
+    kicad
   ];
 }
