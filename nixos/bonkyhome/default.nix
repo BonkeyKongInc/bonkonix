@@ -8,9 +8,15 @@
     ../_mixins/services/pipewire.nix
     ../_mixins/virt
     ../_mixins/services/fix_interrupt.nix
+    ../_mixins/services/musescore_pdf_generator.nix
     ../_mixins/streaming
     ../_mixins/firefox
   ];
+    services.musescore-pdf-watcher = {
+    package = pkgs.callPackage ../../pkgs/musescore_pdf_generator { };
+    path = "/home/patrik/repos/musescore_pdf_generator";
+    time = "10";
+  };
 
   hardware.bluetooth.enable = true;
 
