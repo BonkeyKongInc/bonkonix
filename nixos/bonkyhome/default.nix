@@ -1,5 +1,5 @@
 # Sony Vaio SVS1313C5E 
-{ config, lib, pkgs, ... }:
+{ config, lib, pkgs, username, ... }:
 {
   imports = [
     ../_mixins/services/tailscale.nix
@@ -14,8 +14,8 @@
   ];
     services.musescore-pdf-watcher = {
     package = pkgs.callPackage ../../pkgs/musescore_pdf_generator { };
-    path = "/home/patrik/repos/musescore_pdf_generator";
-    time = "10";
+    path = "/home/${username}/Nextcloud/music/patrik/musescore";
+    time = "120";
   };
 
   hardware.bluetooth.enable = true;
