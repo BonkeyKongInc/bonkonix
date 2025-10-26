@@ -1,5 +1,6 @@
 { pkgs, darkmode, ... }:
-let   theme = ''
+let
+  theme = ''
         ## COLORSCHEME: gruvbox dark (medium)
     set-option -g status "on"
 
@@ -50,7 +51,7 @@ let   theme = ''
     set-window-option -g window-status-format "#[bg=colour239,fg=colour237,noitalics]#[bg=colour239,fg=colour15] #I #[bg=colour239,fg=colour15] #W #[bg=colour237,fg=colour239,noitalics]"
 
   '';
-  in
+in
 {
   programs.tmux = {
     enable = true;
