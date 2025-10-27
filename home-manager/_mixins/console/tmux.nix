@@ -79,6 +79,10 @@ in
 
         set -ga terminal-overrides ",*256col*:Tc"
 
+        # needed for image-nvim
+        set -gq allow-passthrough on
+        set -g visual-activity off
+
         ## Vim style splitting
         bind-key v split-window -h
         bind-key s split-window -v

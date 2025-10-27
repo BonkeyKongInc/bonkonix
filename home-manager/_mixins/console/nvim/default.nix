@@ -64,6 +64,28 @@
       rev = "805405b9f98dc3470f8676773dc0e6151a9158ed";
       hash = "sha256-B/cZUkjAVi52jopBwZJYmiaVf8PqnawusnSGOx7dDqs=";
     };
+    # Fixes that telescope isnt found in build tests
+    doCheck = false;
+  };
+  nvim-tree-preview = pkgs.vimUtils.buildVimPlugin {
+    name = "nvim-tree-preview";
+    src = pkgs.fetchFromGitHub {
+      owner = "b0o";
+      repo = "nvim-tree-preview.lua";
+      rev = "e763de51dca15d65ce4a0b9eca716136ac51b55c";
+      hash = "sha256-7XPYnset01YEtwPUEcS+cXZQwf8h9cARKlgwwCUT3YY=";
+    };
+    doCheck = false;
+  };
+  telescope-gitsigns= pkgs.vimUtils.buildVimPlugin {
+    name = "telescope-gitsigns";
+    src = pkgs.fetchFromGitHub {
+      owner = "radyz";
+      repo = "telescope-gitsigns";
+      rev = "e568da4b8b6da800bd9274f7b509c0da81fc8615";
+      hash = "sha256-ULmo84ameJ4D62wrvsb+9YCUKGhOYpHvgIffGKF0Vo8=";
+    };
+    doCheck = false;
   };
   in 
   {
@@ -85,20 +107,20 @@
         cmp-cmdline
         cmp_luasnip
         cmp-nvim-lsp
-        #cmp-nvim-lsp
-        #cmp-nvim-lua
         luasnip
         nvim-lspconfig
-        #lsp installer - not found
         pounce
         telescope-nvim
         telescope-live-grep-args-nvim
         telescope-changedfiles 
         dir-telescope
+        telescope-gitsigns
         neoscroll-nvim
         gitsigns-nvim
         nvim-tree-lua
         nvim-treesitter.withAllGrammars
+        nvim-tree-preview
+        image-nvim
         fzf-vim
         nvim-web-devicons
         moonfly
@@ -106,8 +128,6 @@
         asyncrun-vim
         vim-markdown-composer
         render-markdown-nvim
-        aerojump
-
         markdown-preview-nvim
         asyncrun-vim
         vim-markdown-composer
@@ -121,31 +141,6 @@
         registers-nvim
         ultimate-autopair-nvim
         hardtime-nvim
-
-        #----- ripxorip plugins -----
-        #bolt
-        #nvim-lspconfig
-        #gitsigns-nvim
-        #catppuccin-nvim
-        #nvim-compe
-        #vim-fugitive
-        #suda-vim
-        #nvim-autopairs
-        #vim-ripgrep
-        #github-nvim-theme
-        # FIXME These shall be created by me
-        #vim-ripgrep
-        #ripxorip/aerojump
-        #ripxorip/utils
-        #editorconfig-vim
-        #neoformat
-        #lsp_signature-nvim
-        #vim-vsnip
-        #nvim-treesitter.withAllGrammars
-        #playground
-        #fzf-vim
-        #vim-tmux-navigator
-        #vim-unimpaired
       ];
 
       extraPackages = with pkgs; [

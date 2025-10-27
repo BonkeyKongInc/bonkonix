@@ -86,8 +86,7 @@ keymap("n", "<leader>fad",
   "<cmd>lua require('telescope.builtin').live_grep({ search_dirs = { vim.fn.expand('%:p:h') }, prompt_title = 'Find in ' .. vim.fn.expand('%:p:h') })<cr>",
   opts
 )
-
---keymap('n', '<leader>ff', "<cmd>lua telescope_bonky.interactive_find_files({ desc = 'Find files (interactive, stateful)' })<cr>", opts)
+keymap("n", "<leader>fh", ":<cmd>lua require('telescope').extensions.git_signs.git_signs({initial_mode=\"normal\",})<cr>", opts)
 
 vim.keymap.set('n', '<leader>ff', function()
   telescope_bonky.interactive_dir_telescope()
@@ -117,8 +116,8 @@ keymap("n", "<leader>e", ":NvimTreeToggle<cr>", opts)
 keymap("n", "<leader>t", "<cmd>ClangdSwitchSourceHeader<cr>", opts) 
 keymap("n", "<C-p>", "<cmd>Telescope buffers<cr>", opts)
 keymap("n", "s", "<cmd>Pounce<cr>",opts)
-keymap("n", "<leader>gj", "<cmd>Gitsigns next_hunk<cr>", opts) 
-keymap("n", "<leader>gk", "<cmd>Gitsigns prev_hunk<cr>", opts) 
+keymap("n", "[c", "<cmd>Gitsigns next_hunk<cr>", opts) 
+keymap("n", "]c", "<cmd>Gitsigns prev_hunk<cr>", opts) 
 keymap("n", "<leader>gd", "<cmd>Gitsigns diffthis<cr>", opts) 
 keymap("n", "<leader>gb", "<cmd>Git blame<cr>", opts) 
 keymap("n", "<leader>gl", "<cmd>Gitsigns blame_line<cr>", opts) 
