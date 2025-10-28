@@ -9,7 +9,7 @@ local builtin = require("telescope.builtin")
 local actions = require "telescope.actions"
 local lga_actions = require("telescope-live-grep-args.actions")
 local utils = require("telescope.utils")
-local dir_telescope = require("dir-telescope")
+--local dir_telescope = require("dir-telescope")
 
 telescope.setup {
   defaults = {
@@ -128,24 +128,24 @@ telescope.setup {
       -- theme = { }, -- use own theme spec
       -- layout_config = { mirror=true }, -- mirror preview pane
     },
-    dir_telescope = {
-      mappings = {
-        i = {
-            ["<C-h>"] = function(prompt_bufnr)
-              local selection = require("telescope.actions.state").get_selected_entry()
-              local dir = vim.fn.fnamemodify(selection.path, ":p:h")
-              require("telescope.actions").close(prompt_bufnr)
-              -- Depending on what you want put `cd`, `lcd`, `tcd`
-              vim.cmd(string.format("silent lcd %s", dir))
-            end
-            }
-
-      },
-      hidden = true,
-      no_ignore = false,
-      show_preview = true,
-      follow_symlinks = false,
-    }
+--    dir_telescope = {
+--      mappings = {
+--        i = {
+--            ["<C-h>"] = function(prompt_bufnr)
+--              local selection = require("telescope.actions.state").get_selected_entry()
+--              local dir = vim.fn.fnamemodify(selection.path, ":p:h")
+--              require("telescope.actions").close(prompt_bufnr)
+--              -- Depending on what you want put `cd`, `lcd`, `tcd`
+--              vim.cmd(string.format("silent lcd %s", dir))
+--            end
+--            }
+--
+--      },
+--      hidden = true,
+--      no_ignore = false,
+--      show_preview = true,
+--      follow_symlinks = false,
+--    }
     -- Your extension configuration goes here:
     -- extension_name = {
     --   extension_config_key = value,
@@ -157,7 +157,8 @@ telescope.setup {
 --telescope.configs = {}
 --telescope.configs["telescope-file-browser.nvim"] = function()
 telescope.load_extension("live_grep_args")
-telescope.load_extension("dir")
+--telescope.load_extension("dir")
 require('telescope').load_extension('changed_files')
+require("telescope").load_extension("git_signs")
 --require("telescope").load_extension "file_browser"
 --end

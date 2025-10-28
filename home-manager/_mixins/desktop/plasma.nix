@@ -4,7 +4,7 @@ with lib.hm.gvariant;
   gtk = { };
   services.kdeconnect.enable = true;
 
-  home= { 
+  home = {
     packages = with pkgs; [
       xclip
     ];

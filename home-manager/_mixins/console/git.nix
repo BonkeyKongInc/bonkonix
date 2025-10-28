@@ -15,6 +15,7 @@
       aliases = {
         adog = "log --all --decorate --oneline --graph";
         co = "checkout";
+        nuke = "!f_git_nuke()";
       };
       userEmail = "patrik.werner@airolit.com";
       userName = "patrik werner";

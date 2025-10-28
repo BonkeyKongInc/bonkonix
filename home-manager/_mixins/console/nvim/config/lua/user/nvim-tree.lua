@@ -40,6 +40,44 @@ end
 --
 --end
 
+local preview = require('nvim-tree-preview')
+--local image = require('image')
+--image.setup({
+--  backend = 'kitty', -- or 'ueberzug' / 'viu' if not using Kitty
+--  resize = true,     -- scale image to window
+--})
+
+-- Setup nvim-tree-preview with image preview enabled
+preview.setup({
+  floating = {
+    height = 20,
+    width = 60,
+  },
+  image_preview = {
+    enable = true,
+    patterns = { '.*%.png$', '.*%.jpg$', '.*%.jpeg$', '.*%.webp$', '.*%.gif$', '.*%.avif$' },
+  },
+})
+local function show_image(node)
+  -- don't assume image_preview exists
+  local patterns = {}
+  if preview.image_preview and preview.image_preview.patterns then
+    patterns = preview.image_preview.patterns
+  end
+
+  local path = node.absolute_path
+  for _, pat in ipairs(patterns) do
+    if path:match(pat) then
+      vim.schedule(function()
+        local win = preview.current_float_win()
+        if win and vim.api.nvim_win_is_valid(win) then
+          pcall(require('image').display, path, { window = win, resize = true })
+        end
+      end)
+      return
+    end
+  end
+end
 local function on_attach(bufnr)
   local api = require('nvim-tree.api')
 
@@ -115,6 +153,36 @@ local function on_attach(bufnr)
   vim.keymap.set('n', 'h', api.node.navigate.parent_close, opts('Close Directory'))
   vim.keymap.set('n', 'v', api.node.open.vertical, opts('Open: Vertical Split'))
   vim.keymap.set('n', 't', api.node.open.tab, opts('Open: New Tab'))
+
+
+  vim.keymap.set('n', 'P', preview.watch, opts 'Preview (Watch)')
+  vim.keymap.set('n', '<Esc>', preview.unwatch, opts 'Close Preview/Unwatch')
+  vim.keymap.set('n', '<C-f>', function() return preview.scroll(4) end, opts 'Scroll Down')
+  vim.keymap.set('n', '<C-b>', function() return preview.scroll(-4) end, opts 'Scroll Up')
+
+-- Option A: Smart tab behavior: Only preview files, expand/collapse directories (recommended)
+  vim.keymap.set('n', '<Tab>', function()
+    local ok, node = pcall(api.tree.get_node_under_cursor)
+    if ok and node then
+      if node.type == 'directory' then
+        api.node.open.edit()
+      else
+        preview.node(node, { toggle_focus = true })
+      end
+    end
+  end, opts 'Preview')
+--  vim.keymap.set('n', '<Tab>', function()
+--    local ok, node = pcall(api.tree.get_node_under_cursor)
+--    if not ok or not node then return end
+--
+--    if node.type == 'directory' then
+--      api.node.open.edit()
+--    else
+--      preview.node(node, { toggle_focus = true })
+--      show_image(node)  -- now uses vim.schedule or vim.defer_fn
+--    end
+--  end, opts 'Preview')
+--
 
 end
 -- Replaces auto_close

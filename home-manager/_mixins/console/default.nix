@@ -34,6 +34,9 @@
       jq
       dig
       gcc
+      llpp
+      #gfortran
+      speedcrunch
       python311Packages.numpy
       python311Packages.libxml2
       python311Packages.libxslt
@@ -42,16 +45,22 @@
       libxml2
       cmake
       libclang
+      gparted
       parted
       rpiboot
+      pinta
+      microsoft-edge
       htop
+      scrcpy
+      libreoffice
+      gcc-arm-embedded-13
       nmap
       iperf
       meson
       pkg-config
       mdr
       ninja
-      gcc-arm-embedded-9 
+      obsidian
     ];
 
 

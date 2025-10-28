@@ -2,13 +2,13 @@
 { inputs, ... }:
 {
   # This one brings our custom packages from the 'pkgs' directory
- additions = final: _prev:
-  let
-    localPkgs = import ../pkgs { pkgs = final; };
-  in
-  localPkgs // {
-    hyprpanel = inputs.hyprpanel.overlay final _prev;
-  };
+  additions = final: _prev:
+    let
+      localPkgs = import ../pkgs { pkgs = final; };
+    in
+    localPkgs // {
+      hyprpanel = inputs.hyprpanel.overlay final _prev;
+    };
 
   # This one contains whatever you want to overlay
   # You can change versions, add patches, set compilation flags, anything really.

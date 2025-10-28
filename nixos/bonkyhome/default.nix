@@ -43,13 +43,13 @@
   '';
 
   fileSystems."/" =
-    { device = "/dev/disk/by-uuid/ede3ff8b-676f-48d7-a87a-adf610d7bf72";
+    {
+      device = "/dev/disk/by-uuid/ede3ff8b-676f-48d7-a87a-adf610d7bf72";
       fsType = "ext4";
     };
 
   swapDevices =
-    [ { device = "/dev/disk/by-uuid/ed7ae231-863c-44e6-922b-08854c9276d0"; }
-    ];
+    [{ device = "/dev/disk/by-uuid/ed7ae231-863c-44e6-922b-08854c9276d0"; }];
 
 
   #swapDevices = [ { device = "/swap/swapfile"; } ];
@@ -67,7 +67,6 @@
 
   # In order for VSCode remote to work
   programs.nix-ld.enable = true;
-  programs.talon.enable = true;
   programs.adb.enable = true;
 
   environment.systemPackages = with pkgs; [
@@ -93,6 +92,6 @@
       Type = "simple";
       Restart = "always";
     };
-};
+  };
   services.cockpit.enable = true;
 }

@@ -1,5 +1,6 @@
 { pkgs, darkmode, ... }:
-let   theme = ''
+let
+  theme = ''
         ## COLORSCHEME: gruvbox dark (medium)
     set-option -g status "on"
 
@@ -50,7 +51,7 @@ let   theme = ''
     set-window-option -g window-status-format "#[bg=colour239,fg=colour237,noitalics]#[bg=colour239,fg=colour15] #I #[bg=colour239,fg=colour15] #W #[bg=colour237,fg=colour239,noitalics]"
 
   '';
-  in
+in
 {
   programs.tmux = {
     enable = true;
@@ -77,6 +78,10 @@ let   theme = ''
         set-option -g default-terminal "screen-256color"
 
         set -ga terminal-overrides ",*256col*:Tc"
+
+        # needed for image-nvim
+        set -gq allow-passthrough on
+        set -g visual-activity off
 
         ## Vim style splitting
         bind-key v split-window -h
