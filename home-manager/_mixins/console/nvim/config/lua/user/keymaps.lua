@@ -64,21 +64,8 @@ keymap("x", "K", ":move '<-2<CR>gv-gv", opts)
 keymap("x", "<A-j>", ":move '>+1<CR>gv-gv", opts)
 keymap("x", "<A-k>", ":move '<-2<CR>gv-gv", opts)
 
--- Terminal --
--- Better terminal navigation
--- keymap("t", "<C-j>", "<C-\\><C-N><C-w>j", term_opts)
--- keymap("t", "<C-l>", "<C-\\><C-N><C-w>l", term_opts)
--- keymap("t", "<C-k>", "<C-\\><C-N><C-w>k", term_opts)
--- keymap("t", "<C-h>", "<C-\\><C-N><C-w>h", term_opts)
-
--- keymaps for qwerty
---keymap("", "<leader>fd", "<cmd>FZF <cr>", opts)
---
--- Telescope
-local live_grep_args = require("telescope").extensions.live_grep_args 
-local live_grep_args_shortcuts = require("telescope-live-grep-args.shortcuts")
+-------------------------Telescope------------------------- 
 local telescope_bonky = require("user.telescope_bonky")
---keymap.set("n", "<leader>fs", live_grep_args_shortcuts.grep_word_under_cursor)
 keymap("n", "<leader>fd", ":Telescope find_files<cr>", opts)
 keymap("n", "<leader>fa", "<cmd>lua require('telescope').extensions.live_grep_args.live_grep_args()<cr>", opts)
 keymap("n", "<leader>tt", "<cmd>Telescope<cr>", opts)
@@ -87,17 +74,10 @@ keymap("n", "<leader>fad",
   opts
 )
 keymap("n", "<leader>fh", ":<cmd>lua require('telescope').extensions.git_signs.git_signs({initial_mode=\"normal\",})<cr>", opts)
-
 vim.keymap.set('n', '<leader>ff', function()
   telescope_bonky.interactive_dir_telescope()
 end, { noremap = true, silent = true, desc = "Find files (interactive, stateful)" })
-
-
---keymap("n", "<leader>fs", "<cmd>lua require('telescope').extensions.live_grep_args.shortcuts.grep_word_under_cursor()<cr>", opts)
 keymap("n", "<leader>fs", "<cmd>lua require('telescope-live-grep-args.shortcuts').grep_word_under_cursor()<cr>", opts)
- 
---keymap("n", "<leader>fs", live_grep_args.shortcuts.grep_word_under_cursor())
---keymap("n", "<leader>fs", "<cmd>Telescope grep_string<cr>", opts)
 keymap("n", "<leader>jq", "<cmd>Telescope quickfix<cr>", opts)
 keymap("n", "<leader>sj", "<cmd>Telescope search_history<cr>", opts)
 keymap("n", "<leader>sr", "<cmd>Telescope current_buffer_fuzzy_find<cr>", opts)
@@ -106,30 +86,23 @@ keymap("n", "<leader>b", "<cmd>Telescope changed_files choose_base_branch<cr>", 
 keymap("n", "<leader>gs", "<cmd>Telescope git_status<cr>", opts)
 keymap("n", "<leader>kk", "<cmd>Telescope keymaps<cr>", opts)
 keymap("n", "<leader>e", ":NvimTreeToggle<cr>", opts)
---keymap("n", "<leader>a", function() nvim_tree_api.tree.toggle({ path = "<args>", find_file = false, update_root = false, focus = true, }) end, opts('some desc'))
--- keymaps for colemak
---keymap("", "<leader>ts", "<cmd>FZF <cr>", opts)
---keymap("n", "<leader>ta", "<cmd>Telescope live_grep<cr>", opts)
---keymap("n", "<leader>tr", "<cmd>Telescope grep_string<cr>", opts)
---keymap("n", "<leader>e", ":NvimTreeToggle<cr>", opts)
---keymap("n", "<leader>t", ":tabnew",opts)
 keymap("n", "<leader>t", "<cmd>ClangdSwitchSourceHeader<cr>", opts) 
 keymap("n", "<C-p>", "<cmd>Telescope buffers<cr>", opts)
 keymap("n", "s", "<cmd>Pounce<cr>",opts)
+
+-----------------------GIT-----------------------
 keymap("n", "[c", "<cmd>Gitsigns next_hunk<cr>", opts) 
 keymap("n", "]c", "<cmd>Gitsigns prev_hunk<cr>", opts) 
 keymap("n", "<leader>gd", "<cmd>Gitsigns diffthis<cr>", opts) 
 keymap("n", "<leader>gb", "<cmd>Git blame<cr>", opts) 
 keymap("n", "<leader>gl", "<cmd>Gitsigns blame_line<cr>", opts) 
 
+-----------------------MISC-----------------------
+--- close only buffer container
 keymap("n", "<leader>fq", ":bp|bd # <cr>", opts)
-keymap("n", "<leader>il", "<cmd>lua vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())<cr>", opts)
+--- my own surround func
+keymap("x", "<leader>s", ":<cmd>lua require('user.bonkycmds').WrapVisual()<cr>", opts)
 
+keymap("n", "<leader>il", "<cmd>lua vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())<cr>", opts)
 keymap("n", "<leader>re", ":Regedit ", opts)
 keymap("n", "<leader>reo", ":Regedit open<cr>", opts)
---keymap("n", "gD", "<cmd>lua vim.lsp.buf.declaration()<CR>", opts)
---keymap("n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", opts)
---keymap("n", "K", "<cmd>lua vim.lsp.buf.hover()<CR>", opts)
---keymap("n", "gi", "<cmd>lua vim.lsp.buf.implementation()<CR>", opts)
---keymap("n", "<C-k>", "<cmd>lua vim.lsp.buf.signature_help()<CR>", opts)
---keymap("n", "gr", "<cmd>lua vim.lsp.buf.references()<CR>", opts)

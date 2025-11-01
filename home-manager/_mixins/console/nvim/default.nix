@@ -98,7 +98,7 @@
       plugins = with pkgs.vimPlugins; [
         #packer-nvim
         popup-nvim
-        #plenary-nvim
+      #plenary-nvim
         lualine-nvim
         nightfox-nvim
         nvim-cmp
@@ -121,6 +121,7 @@
         nvim-treesitter.withAllGrammars
         nvim-tree-preview
         image-nvim
+        nvim-autopairs
         fzf-vim
         nvim-web-devicons
         moonfly
@@ -139,7 +140,6 @@
         vimtex
         regedit
         registers-nvim
-        ultimate-autopair-nvim
         hardtime-nvim
       ];
 
@@ -151,6 +151,7 @@
         python312Packages.jedi
         bash-language-server
         shellcheck
+      #ueberzugpp  needed by image-nvim
       ];
 
       extraConfig = ''

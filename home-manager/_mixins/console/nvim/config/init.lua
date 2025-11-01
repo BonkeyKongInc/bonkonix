@@ -1,4 +1,5 @@
 vim.opt.runtimepath:prepend("~/.bonktemp/")
+require "user.bonkycmds"
 require "user.options"
 require "user.colorscheme"
 require "user.cmp"
@@ -21,3 +22,4 @@ require "user.lang"
 require "user.misc"
 require "user.telescope_bonky"
 require("hardtime").setup()
+require("nvim-autopairs").setup()
