@@ -1,5 +1,6 @@
 vim.opt.runtimepath:prepend("~/.bonktemp/")
-require "user.bonkycmds"
+require "user.bonkyfuncs"
+require "user.bonky-autocmds"
 require "user.options"
 require "user.colorscheme"
 require "user.cmp"
