@@ -42,9 +42,6 @@
   boot.initrd.kernelModules = [ ];
   boot.kernelModules = [ "kvm-intel" "usbmon" ];
   boot.extraModulePackages = [ ];
-  boot.kernel.sysctl = {
-    "kernel.dmesg_restrict" = 0;
-  };
   # See https://github.com/Mic92/envfs (for scripts to get access to /bin/bash etc.)
   services.envfs.enable = true;
   services.printing.enable = true;
@@ -106,6 +103,14 @@
   # In order for VSCode remote to work
   programs.nix-ld.enable = true;
   programs.adb.enable = true;
+
+  programs.steam = {
+    enable = true;
+    remotePlay.openFirewall = true; # Open ports in the firewall for Steam Remote Play
+    dedicatedServer.openFirewall = true; # Open ports in the firewall for Source Dedicated Server
+    localNetworkGameTransfers.openFirewall = true; # Open ports in the firewall for Steam Local Network Game Transfers
+  };
+
 
   environment.systemPackages = with pkgs; [
     gomuks
