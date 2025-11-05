@@ -101,7 +101,7 @@ keymap("n", "<leader>gl", "<cmd>Gitsigns blame_line<cr>", opts)
 --- close only buffer container
 keymap("n", "<leader>fq", ":bp|bd # <cr>", opts)
 --- my own surround func
-keymap("x", "<leader>s", ":<cmd>lua require('user.bonkycmds').WrapVisual()<cr>", opts)
+keymap("x", "<leader>s", ":<cmd>lua require('user.bonkyfuncs').WrapVisual()<cr>", opts)
 
 keymap("n", "<leader>il", "<cmd>lua vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())<cr>", opts)
 keymap("n", "<leader>re", ":Regedit ", opts)
