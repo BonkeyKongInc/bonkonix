@@ -22,5 +22,6 @@ require "user.guess-indent"
 require "user.lang"
 require "user.misc"
 require "user.telescope_bonky"
-require("hardtime").setup()
+require "user.lint"
+--require("hardtime").setup()
 require("nvim-autopairs").setup()

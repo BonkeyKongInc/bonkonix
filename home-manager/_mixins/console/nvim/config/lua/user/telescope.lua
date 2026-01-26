@@ -61,7 +61,7 @@ telescope.setup {
         ["<Tab>"] = actions.toggle_selection + actions.move_selection_worse,
         ["<S-Tab>"] = actions.toggle_selection + actions.move_selection_better,
         ["<C-q>"] = actions.send_to_qflist + actions.open_qflist,
-        ["<M-q>"] = actions.send_selected_to_qflist + actions.open_qflist,
+        ["<S-q>"] = actions.send_selected_to_qflist + actions.open_qflist,
 
         ["j"] = actions.move_selection_next,
         ["k"] = actions.move_selection_previous,
@@ -120,7 +120,7 @@ telescope.setup {
         i = {
           ["<C-i>"] = lga_actions.quote_prompt({ postfix =  " " .. vim.fn.expand('%:p:h')}),
           ["<C-f>"] = lga_actions.quote_prompt({ postfix =  " " .. "--type "}),
-          ["<C-d>"] = lga_actions.quote_prompt({ postfix = " --iglob  **/*/**" }),
+          --["<C-d>"] = lga_actions.quote_prompt({ postfix = " --iglob  **/*/**" }),
         },
       },
       -- ... also accepts theme settings, for example:

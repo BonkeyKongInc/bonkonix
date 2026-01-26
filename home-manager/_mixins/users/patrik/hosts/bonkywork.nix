@@ -18,6 +18,7 @@ with lib.hm.gvariant;
       netcat
       traceroute
       opencode
+      kicad
     ];
   };
 }

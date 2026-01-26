@@ -109,6 +109,7 @@
         cmp-nvim-lsp
         luasnip
         nvim-lspconfig
+        nvim-lint
         pounce
         telescope-nvim
         telescope-live-grep-args-nvim
@@ -140,7 +141,7 @@
         vimtex
         regedit
         registers-nvim
-        hardtime-nvim
+        vim-flake8
       ];
 
       extraPackages = with pkgs; [
@@ -151,6 +152,7 @@
         python312Packages.jedi
         bash-language-server
         shellcheck
+        python312Packages.flake8
       #ueberzugpp  needed by image-nvim
       ];
 

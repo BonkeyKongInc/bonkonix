@@ -145,6 +145,9 @@ cmp.setup({
             enabled = true,
             include_params = true,
           },
+          flake8 = {
+            enabled = true,
+          },
         },
       },
     }
@@ -172,6 +175,12 @@ cmp.setup({
       on_attach=on_attach,
       capabilities=capabilities
   })
+vim.diagnostic.enable()
+vim.diagnostic.config({
+  virtual_text = true,
+  signs = true,
+  underline = true,
+})
 --cmp.setup {
 --  snippet = {
 --    expand = function(args)

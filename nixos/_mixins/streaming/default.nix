@@ -15,4 +15,8 @@
 
     ffmpeg
   ];
+  environment.variables.GST_PLUGIN_SYSTEM_PATH_1_0 = 
+    "${pkgs.gst_all_1.gstreamer}/lib/gstreamer-1.0:" +
+    "${pkgs.gst_all_1.gst-plugins-base}/lib/gstreamer-1.0:" +
+    "${pkgs.gst_all_1.gst-plugins-good}/lib/gstreamer-1.0";
 }
