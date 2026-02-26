@@ -19,6 +19,8 @@ with lib.hm.gvariant;
       traceroute
       opencode
       kicad
+      chromium
+      claude-code
     ];
   };
 }
