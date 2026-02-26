@@ -23,5 +23,6 @@ require "user.lang"
 require "user.misc"
 require "user.telescope_bonky"
 require "user.lint"
+require "user.claude"
 --require("hardtime").setup()
 require("nvim-autopairs").setup()

@@ -22,13 +22,12 @@
       eza
       fd
       bat
-      delta
       btop
       tmux
       age
       bitwarden-cli
       tokei
-      du-dust
+      dust
       radare2
       wireguard-tools
       jq

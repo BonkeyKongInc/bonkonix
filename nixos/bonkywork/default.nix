@@ -14,9 +14,9 @@
   hardware.nvidia.package = config.boot.kernelPackages.nvidiaPackages.stable;
   #hardware.opengl.enable = true;
   services.xserver.videoDrivers = [ "nvidia" ];
-  hardware.opengl  = {
+  hardware.graphics  = {
     enable = true;
-    driSupport32Bit = true;
+    enable32Bit = true;
 
     extraPackages = with pkgs; [ nvidia-vaapi-driver ];
     extraPackages32 = with pkgs; [ ];
@@ -118,14 +118,14 @@
     remmina
     wireshark
     (pkgs.python3.withPackages (ps: with ps; [ pyserial python-lsp-server ]))
-    glxinfo 
+    mesa-demos
     vulkan-tools 
   ];
   # stuff needed for tpm module with virt manager
   environment.etc = {
     "ovmf/edk2-x86_64-secure-code.fd" = {
       source = config.virtualisation.libvirtd.qemu.package + "/share/qemu/edk2-x86_64-secure-code.fd";
-    };
+  };
 
     "ovmf/edk2-i386-vars.fd" = {
       source = config.virtualisation.libvirtd.qemu.package + "/share/qemu/edk2-i386-vars.fd";

@@ -128,11 +128,10 @@
         moonfly
         markdown-preview-nvim
         asyncrun-vim
-        vim-markdown-composer
+        #vim-markdown-composer
         render-markdown-nvim
         markdown-preview-nvim
         asyncrun-vim
-        vim-markdown-composer
         render-markdown-nvim
         vim-dirdiff
         markview-nvim
@@ -142,6 +141,7 @@
         regedit
         registers-nvim
         vim-flake8
+        claudecode-nvim
       ];
 
       extraPackages = with pkgs; [

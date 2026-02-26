@@ -3,7 +3,7 @@ with lib.hm.gvariant;
 {
   imports = [ ];
   dconf.settings = { };
-  programs.git.userEmail = "patrik.werner@airolit.com";
+  programs.git.settings.user.email = "patrik.werner@airolit.com";
   home = {
     packages = with pkgs; [
       microsoft-edge
