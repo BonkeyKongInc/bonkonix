@@ -130,12 +130,12 @@ cmp.setup({
   local capabilities = require('cmp_nvim_lsp').default_capabilities()
   capabilities.textDocument.completion.completionItem.snippetSupport = true
   -- Replace <YOUR_LSP_SERVER> with each lsp server you've enabled.
-  require'lspconfig'.lua_ls.setup{
+  vim.lsp.config("lua_ls", {
     on_attach = on_attach,
     capabilities = capabilities,
-  }
+  })
 
-  require'lspconfig'.pylsp.setup{
+  vim.lsp.config("pylsp", {
     on_attach = on_attach,
     capabilities = capabilities,
     settings = {
@@ -151,20 +151,20 @@ cmp.setup({
         },
       },
     }
-  }
+  })
 
 
-  --  require'lspconfig'.pyright.setup{
+  --  vim.lsp.config(pyright.setup{
   --    on_attach = on_attach,
   --    capabilities = capabilities,
   --  }
 
-  require'lspconfig'.clangd.setup{
+  vim.lsp.config("clangd", {
     on_attach = on_attach,
     capabilities = capabilities,
-  }
+  })
 
-  require'lspconfig'.nil_ls.setup({
+  vim.lsp.config("nil_ls", {
       settings = {
           ['nil'] = {
             formatting = {
