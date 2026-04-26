@@ -50,7 +50,7 @@ in
        alias c="cd"
        alias ..="cd .."
        alias nv="nvim ."
-       alias l="exa -la --git --icons"
+       alias l="exa -lag --git --icons"
        alias cat='bat'
        alias less='bat'
        alias sysc="sudo systemctl"
