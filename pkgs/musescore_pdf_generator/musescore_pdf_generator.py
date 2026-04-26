@@ -15,7 +15,7 @@ MUSESCORE_CMD = "mscore"
 timers = {}
 
 def generate_pdf(filepath):
-    generation_time = time.strftime('_%Y-%m-%d_%H:%M:%S')
+    generation_time = time.strftime('_%Y-%m-%d_%H-%M-%S')
     pdf_file = os.path.splitext(filepath)[0] + generation_time + ".pdf"
     if os.path.exists(pdf_file) and os.path.getmtime(pdf_file) >= os.path.getmtime(filepath):
         print(f"[{time.strftime('%H:%M:%S')}] PDF up-to-date: {pdf_file}")
