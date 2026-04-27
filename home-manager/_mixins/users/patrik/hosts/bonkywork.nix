@@ -21,6 +21,8 @@ with lib.hm.gvariant;
       kicad
       chromium
       claude-code
+      zellij
+
     ];
   };
 }
