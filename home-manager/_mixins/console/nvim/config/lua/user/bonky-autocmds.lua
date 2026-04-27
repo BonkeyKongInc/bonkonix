@@ -19,3 +19,38 @@ vim.api.nvim_create_autocmd("TextYankPost", {
     vim.fn.setreg("1", content, regtype)
   end,
 })
+
+vim.api.nvim_create_autocmd("BufEnter", {
+  pattern = "*.acclog",
+  callback = function(args)
+    local file = vim.fn.fnamemodify(args.file, ":p")
+
+    -- Look for an existing terminal buffer for this file
+    for _, buf in ipairs(vim.api.nvim_list_bufs()) do
+      print(buf)
+      if vim.api.nvim_buf_is_loaded(buf) then
+        local name = vim.api.nvim_buf_get_name(buf)
+          print(name)
+
+        if name:match("^term://") and name:find(file, 1, true) then
+          vim.api.nvim_set_current_buf(buf)
+          return
+        else
+        end
+      end
+    end
+    -- Otherwise open a new terminal
+    vim.cmd("terminal cat " .. vim.fn.fnameescape(file))
+  end,
+})
+
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = "qf",
+  callback = function()
+    vim.keymap.set("n", "dd", function()
+      local qf = vim.fn.getqflist()
+      table.remove(qf, vim.fn.line("."))
+      vim.fn.setqflist(qf, "r")
+    end, { buffer = true })
+  end,
+})
