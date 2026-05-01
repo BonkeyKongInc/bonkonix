@@ -1,7 +1,7 @@
 { desktop, pkgs, lib, ... }:
 
 let
-  kitty_light_theme = "Solarized_Light";
+  kitty_light_theme = "AtomOneLight";
   kitty_dark_theme = "Doom_One";
 in
 {
