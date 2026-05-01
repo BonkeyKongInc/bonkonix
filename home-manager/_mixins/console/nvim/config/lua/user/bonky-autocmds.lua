@@ -53,4 +53,29 @@ vim.api.nvim_create_autocmd("FileType", {
       vim.fn.setqflist(qf, "r")
     end, { buffer = true })
   end,
+
+local theme_file = vim.fn.expand("~/.config/theme-mode")
+
+local function apply_theme()
+  local f = io.open(theme_file, "r")
+  if not f then return end
+
+  local mode = f:read("*l")
+  f:close()
+
+  if mode == "light" then
+    vim.o.background = "light"
+    vim.cmd("colorscheme zellner")
+  else
+    vim.o.background = "dark"
+    vim.cmd("colorscheme moonfly")
+  end
+end
+
+-- Apply on startup
+apply_theme()
+
+-- Re-apply when coming back into focus or switching buffers
+vim.api.nvim_create_autocmd({ "FocusGained", "BufEnter" }, {
+  callback = apply_theme,
 })

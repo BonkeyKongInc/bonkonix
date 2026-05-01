@@ -1,27 +1,14 @@
-{ desktop, darkmode, pkgs, ... }:
+{ desktop, pkgs, lib, ... }:
+
 let
-
-  kitty_light_theme = "GitHub Light";
-  kitty_light_theme_font = "Iosevka NF Bold";
-  kitty_light_theme_font_size = 11;
-  kitty_light_theme_window_decorations = "no";
-
-  #1984
+  kitty_light_theme = "Solarized_Light";
   kitty_dark_theme = "Doom_One";
-  kitty_dark_theme_font = "Iosevka NF";
-  kitty_dark_theme_font_size = 13;
-  kitty_dark_theme_window_decorations = "yes";
-
-  kitty_theme = if darkmode then kitty_dark_theme else kitty_light_theme;
-  kitty_theme_font = if darkmode then kitty_dark_theme_font else kitty_light_theme_font;
-  kitty_theme_font_size = if darkmode then kitty_dark_theme_font_size else kitty_light_theme_font_size;
-  kitty_theme_window_decorations = if darkmode then kitty_dark_theme_window_decorations else kitty_light_theme_window_decorations;
-
 in
 {
   imports = [
     (./. + "/${desktop}.nix")
   ];
+
   home = {
     packages = with pkgs; [
       element-desktop
@@ -31,11 +18,14 @@ in
   programs = {
     kitty = {
       enable = true;
-      themeFile = kitty_theme;
+
+      extraConfig = ''
+        include ~/.config/kitty/theme-current.conf
+      '';
 
       settings = {
-        font_family = kitty_theme_font;
-        font_size = kitty_theme_font_size;
+        font_family = "Iosevka NF";
+        font_size = 13;
 
         scrollback_lines = 10000;
         placement_strategy = "center";
@@ -44,7 +34,7 @@ in
         input_delay = 1;
         sync_to_monitor = "no";
         enable_audio_bell = "no";
-        hide_window_decorations = kitty_theme_window_decorations;
+        hide_window_decorations = "yes";
         allow_remote_control = "yes";
       };
 
@@ -54,6 +44,62 @@ in
         "ctrl+f11" = "toggle_fullscreen";
       };
     };
-
   };
+
+  # -------------------------
+  # 🎨 THEMES (managed by Nix)
+  # -------------------------
+  home.file.".config/kitty/themes/dark.conf".source =
+    "${pkgs.kitty-themes}/share/kitty-themes/themes/${kitty_dark_theme}.conf";
+
+  home.file.".config/kitty/themes/light.conf".source =
+    "${pkgs.kitty-themes}/share/kitty-themes/themes/${kitty_light_theme}.conf";
+
+  # -------------------------
+  # 🌗 ACTIVE THEME POINTER
+  # -------------------------
+  #  home.file.".config/kitty/theme-current.conf".text = ''
+  #    include ~/.config/kitty/themes/dark.conf
+  #  '';
+
+  # -------------------------
+  # 🧠 STATE FILE
+  # -------------------------
+
+  # -------------------------
+  # ⚡ TOGGLE (no kitty @, no rebuild dependency)
+  # -------------------------
+  home.file.".local/bin/toggle-theme" = {
+    executable = true;
+    text = ''
+      #!/usr/bin/env bash
+
+      STATE="$HOME/.config/theme-mode"
+      KITTY="$HOME/.config/kitty"
+      BAT="$HOME/.config/bat"
+
+      current=$(cat "$STATE" 2>/dev/null)
+
+      if [[ "$current" == "light" ]]; then
+          ln -sf "$KITTY/themes/dark.conf" "$KITTY/theme-current.conf"
+          echo '--theme="1337"' > "$BAT/config"
+          echo "dark" > "$STATE"
+      else
+          ln -sf "$KITTY/themes/light.conf" "$KITTY/theme-current.conf"
+          echo '--theme="light"' > "$BAT/config"
+          echo "light" > "$STATE"
+      fi
+
+      pkill -USR1 kitty
+    '';
+  };
+  home.activation.createThemeMode = lib.hm.dag.entryAfter ["writeBoundary"] ''
+  if [ ! -f "$HOME/.config/theme-mode" ]; then
+    echo "dark" > "$HOME/.config/theme-mode"
+  fi
+  if [ ! -f "$HOME/.config/bat/config" ]; then
+    mkdir "$HOME/.config/bat"
+    echo '--theme="1337" > "$HOME/.config/bat/config'
+  fi
+  '';
 }
