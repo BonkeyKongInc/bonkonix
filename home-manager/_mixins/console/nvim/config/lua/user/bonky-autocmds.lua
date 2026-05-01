@@ -53,6 +53,7 @@ vim.api.nvim_create_autocmd("FileType", {
       vim.fn.setqflist(qf, "r")
     end, { buffer = true })
   end,
+})
 
 local theme_file = vim.fn.expand("~/.config/theme-mode")
 
