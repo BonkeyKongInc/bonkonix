@@ -74,6 +74,7 @@ in
        alias px4sitl="./Tools/airolit_sitl_start.sh make px4_sitl gazebo-classic_iris__baylands -j18"
        alias loadpx4="./Tools/px_uploader.py build/px4_fmu-v5_multicopter/px4_fmu-v5_multicopter.px4 --port /dev/ttyACM0"
        alias loadpx4_x1="./Tools/px_uploader.py build/cubepilot_cubeorange_default/cubepilot_cubeorange_default.px4 --port /dev/ttyACM0"
+       alias loadpx4_cx10="./Tools/px_uploader.py build/cubepilot_cubeorangeplus_default/cubepilot_cubeorangeplus_default.px4 --port /dev/ttyACM0"
        alias pidgains='python ~/dev/tool_pid_summarizer/main.py'
        alias pj='~/apps/PlotJuggler/build/bin/plotjuggler'
        alias autlog="cd ~/dev/AirolitUlogTool/ && .venv/bin/python main.py"
