@@ -102,7 +102,6 @@
 
   # In order for VSCode remote to work
   programs.nix-ld.enable = true;
-  programs.adb.enable = true;
 
   programs.steam = {
     enable = true;
@@ -120,6 +119,7 @@
     (pkgs.python3.withPackages (ps: with ps; [ pyserial python-lsp-server ]))
     mesa-demos
     vulkan-tools 
+    android-tools
   ];
   # stuff needed for tpm module with virt manager
   environment.etc = {
@@ -134,6 +134,7 @@
   nixpkgs.config.permittedInsecurePackages = [
     "olm-3.2.16"
     "electron-27.3.11"
+    "electron-39.8.10"
   ];
   nixpkgs.config.allowUnsupportedSystem = true;
   security.wrappers.dumpcap = {
