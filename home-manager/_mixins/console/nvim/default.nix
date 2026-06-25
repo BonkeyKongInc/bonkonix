@@ -108,7 +108,6 @@
         cmp_luasnip
         cmp-nvim-lsp
         luasnip
-        nvim-lspconfig
         nvim-lint
         pounce
         telescope-nvim
@@ -139,7 +138,7 @@
       #neo-img
         vimtex
         regedit
-        registers-nvim
+      #registers-nvim upstream deleted
         vim-flake8
         claudecode-nvim
       ];
@@ -148,7 +147,8 @@
         tree-sitter
         nil
         lua-language-server
-        pyright
+        python312Packages.python-lsp-server
+        clang-tools
         python312Packages.jedi
         bash-language-server
         shellcheck

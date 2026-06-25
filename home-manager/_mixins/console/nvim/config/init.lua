@@ -1,4 +1,3 @@
-vim.opt.runtimepath:prepend("~/.bonktemp/")
 require "user.bonkyfuncs"
 require "user.bonky-autocmds"
 require "user.options"

@@ -1,1 +1,1 @@
-require("registers").setup()
+-- registers-nvim upstream deleted
