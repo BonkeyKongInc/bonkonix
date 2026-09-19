@@ -2,8 +2,6 @@
   imports = [ ]
     ++ lib.optional (builtins.pathExists (./. + "/hosts/${hostname}.nix")) ./hosts/${hostname}.nix;
 
-  home = { };
-
   programs = {
     direnv = {
       enable = true;

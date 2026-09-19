@@ -35,6 +35,19 @@ vim.api.nvim_create_autocmd('LspAttach', {
 })
 
 vim.lsp.enable('clangd')
+
+vim.api.nvim_create_user_command('ClangdSwitchSourceHeader', function()
+  local clients = vim.lsp.get_clients({ bufnr = 0, name = 'clangd' })
+  if #clients == 0 then
+    vim.notify('clangd not attached to this buffer', vim.log.levels.WARN)
+    return
+  end
+  clients[1].request('textDocument/switchSourceHeader', { uri = vim.uri_from_bufnr(0) }, function(err, result)
+    if err then vim.notify(tostring(err), vim.log.levels.ERROR); return end
+    if not result then vim.notify('No corresponding file found', vim.log.levels.WARN); return end
+    vim.cmd.edit(vim.uri_to_fname(result))
+  end, 0)
+end, {})
 vim.lsp.enable('lua_ls')
 vim.lsp.enable('nil_ls')
 vim.lsp.enable('pylsp')

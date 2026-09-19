@@ -80,6 +80,9 @@ in
        alias autlog="cd ~/dev/AirolitUlogTool/ && .venv/bin/python main.py"
        alias mavsh='~/dev/px4_logger_tester/.venv/bin/python ~/dev/px4_logger_tester/mavlink_shell.py'
 
+       # Misc aliases
+       alias finddoodle="echo "Hello" | socat - udp-datagram:10.223.255.255:11111,broadcast,sp=5000"
+
        alias pvenv="./.venv/bin/python"
        alias nv.="nvim ."
        alias bp='btop'

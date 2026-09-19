@@ -22,6 +22,7 @@ with lib.hm.gvariant;
       chromium
       claude-code
       zellij
+      appimage-run
 
     ];
   };
